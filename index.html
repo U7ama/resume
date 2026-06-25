@@ -896,10 +896,52 @@
       }
     }
 
-    // Fetch and render CV from markdown
+    /* ── Auto-fit Print: scale font to always fill exactly 1 A4 page ── */
+    function autofitPrint() {
+      const cv = document.getElementById("cv");
+      // Temporarily remove fixed height to measure natural content height
+      const origH = cv.style.height;
+      const origO = cv.style.overflow;
+      cv.style.setProperty("height", "auto", "important");
+      cv.style.setProperty("overflow", "visible", "important");
+
+      // Force layout recalc
+      void cv.offsetHeight;
+      const naturalH = cv.scrollHeight;
+
+      // A4 = 297mm, at 96 DPI 1mm ≈ 3.7795px → 297mm ≈ 1122px
+      const a4Px = 297 * (96 / 25.4);
+
+      // Target ~95% of page to leave a small breathing margin
+      const targetPx = a4Px * 0.95;
+
+      const basePt = 10;
+      let newPt = basePt;
+
+      if (naturalH > targetPx) {
+        // Content too tall → shrink font proportionally (min 7.5pt)
+        newPt = Math.max(basePt * (targetPx / naturalH), 7.5);
+      } else if (naturalH < a4Px * 0.72) {
+        // Content too short → grow font to fill page (max 12pt)
+        newPt = Math.min(basePt * (a4Px * 0.85 / naturalH), 12);
+      }
+
+      document.documentElement.style.fontSize = newPt + "pt";
+
+      // Restore constraints
+      cv.style.height = origH;
+      cv.style.overflow = origO;
+    }
+
+    window.addEventListener("beforeprint", autofitPrint);
+    window.addEventListener("afterprint", function () {
+      document.documentElement.style.fontSize = "";
+    });
+
+    // Fetch and render CV from markdown, then prep print scaling
     fetch(CV_RAW_URL + "?t=" + Date.now())
       .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(md => renderCV(parseCV(md)))
+      .then(md => { renderCV(parseCV(md)); })
       .catch(e => console.warn("cv.md fetch failed, using static content:", e));
   </script>
 </body>
