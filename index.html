@@ -710,7 +710,9 @@
        in the markdown file reflect instantly without redeployment.
        Falls back to the static HTML content if fetch fails. */
 
-    const CV_RAW_URL = "https://raw.githubusercontent.com/U7ama/resume/main/cv.md";
+    const CV_RAW_URL = window.location.protocol === "file:"
+      ? "https://raw.githubusercontent.com/U7ama/resume/main/cv.md"
+      : "cv.md";
 
     // SVG icon templates for contact items
     const CONTACT_ICONS = {
