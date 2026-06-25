@@ -368,8 +368,9 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        gap: 0.9rem;
+        /* Keep standard equal page margins, then distribute remaining height between sections. */
+        justify-content: space-between;
+        gap: 0;
       }
 
       h1 {
@@ -895,7 +896,7 @@
       }
     }
 
-    /* ── Auto-fit Print: scale font to always fill exactly 1 A4 page ── */
+    /* ── Auto-fit Print: scale font down if content overflows ── */
     function autofitPrint() {
       const cv = document.getElementById("cv");
       // Temporarily remove fixed height to measure natural content height
@@ -914,15 +915,12 @@
       // Target ~95% of page to leave a small breathing margin
       const targetPx = a4Px * 0.95;
 
-      const basePt = 10;
+      const basePt = 9.6;
       let newPt = basePt;
 
       if (naturalH > targetPx) {
-        // Content too tall → shrink font proportionally (min 7.5pt)
+        // Content too tall → shrink font proportionally (min 7.5pt) to fit on one page
         newPt = Math.max(basePt * (targetPx / naturalH), 7.5);
-      } else if (naturalH < a4Px * 0.72) {
-        // Content too short → grow font to fill page (max 12pt)
-        newPt = Math.min(basePt * (a4Px * 0.85 / naturalH), 12);
       }
 
       document.documentElement.style.fontSize = newPt + "pt";
