@@ -667,15 +667,11 @@
       const cv = document.getElementById("cv");
       // Store original inline styles
       const origW = cv.style.width;
-      const origH = cv.style.height;
-      const origO = cv.style.overflow;
       const origMaxW = cv.style.maxWidth;
 
       // Force print layout styling temporarily for measurement
       cv.style.setProperty("width", "210mm", "important");
       cv.style.setProperty("max-width", "none", "important");
-      cv.style.setProperty("height", "auto", "important");
-      cv.style.setProperty("overflow", "visible", "important");
 
       // Force layout recalc
       void cv.offsetHeight;
@@ -697,15 +693,16 @@
 
       // Restore inline styles
       if (origW) cv.style.width = origW; else cv.style.removeProperty("width");
-      if (origH) cv.style.height = origH; else cv.style.removeProperty("height");
-      if (origO) cv.style.overflow = origO; else cv.style.removeProperty("overflow");
       if (origMaxW) cv.style.maxWidth = origMaxW; else cv.style.removeProperty("max-width");
     }
 
     document.getElementById("printButton").addEventListener("click", function () {
       autofitPrint();
-      window.print();
-      document.documentElement.style.fontSize = "";
+      // Allow browser to process layout updates and paint a frame before print dialog opens
+      setTimeout(() => {
+        window.print();
+        document.documentElement.style.fontSize = "";
+      }, 100);
     });
 
     /* ── CV Markdown Loader ──
