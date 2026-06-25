@@ -662,8 +662,50 @@
   </div>
 
   <script>
+    /* ── Auto-fit Print: scale font down if content overflows ── */
+    function autofitPrint() {
+      const cv = document.getElementById("cv");
+      // Store original inline styles
+      const origW = cv.style.width;
+      const origH = cv.style.height;
+      const origO = cv.style.overflow;
+      const origMaxW = cv.style.maxWidth;
+
+      // Force print layout styling temporarily for measurement
+      cv.style.setProperty("width", "210mm", "important");
+      cv.style.setProperty("max-width", "none", "important");
+      cv.style.setProperty("height", "auto", "important");
+      cv.style.setProperty("overflow", "visible", "important");
+
+      // Force layout recalc
+      void cv.offsetHeight;
+      const naturalH = cv.scrollHeight;
+
+      // A4 = 297mm, at 96 DPI 1mm ≈ 3.7795px → 297mm ≈ 1122px
+      const a4Px = 297 * (96 / 25.4);
+      const targetPx = a4Px * 0.95;
+
+      const basePt = 9.6;
+      let newPt = basePt;
+
+      if (naturalH > targetPx) {
+        // Content too tall → shrink font proportionally (min 7.5pt) to fit on one page
+        newPt = Math.max(basePt * (targetPx / naturalH), 7.5);
+      }
+
+      document.documentElement.style.fontSize = newPt + "pt";
+
+      // Restore inline styles
+      if (origW) cv.style.width = origW; else cv.style.removeProperty("width");
+      if (origH) cv.style.height = origH; else cv.style.removeProperty("height");
+      if (origO) cv.style.overflow = origO; else cv.style.removeProperty("overflow");
+      if (origMaxW) cv.style.maxWidth = origMaxW; else cv.style.removeProperty("max-width");
+    }
+
     document.getElementById("printButton").addEventListener("click", function () {
+      autofitPrint();
       window.print();
+      document.documentElement.style.fontSize = "";
     });
 
     /* ── CV Markdown Loader ──
