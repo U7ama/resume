@@ -926,8 +926,16 @@
       document.documentElement.style.fontSize = newPt + "pt";
 
       // Restore constraints
-      cv.style.height = origH;
-      cv.style.overflow = origO;
+      if (origH) {
+        cv.style.height = origH;
+      } else {
+        cv.style.removeProperty("height");
+      }
+      if (origO) {
+        cv.style.overflow = origO;
+      } else {
+        cv.style.removeProperty("overflow");
+      }
     }
 
     window.addEventListener("beforeprint", autofitPrint);
