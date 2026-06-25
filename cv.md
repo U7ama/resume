@@ -1,6 +1,6 @@
 # Usama Aslam
 
-> Full Stack Developer
+> Full Stack Developer | AI & SaaS
 
 Full stack engineer with 4+ years building SaaS products, dashboards, AI features, APIs, and cloud systems for startups, teams, and businesses.
 
