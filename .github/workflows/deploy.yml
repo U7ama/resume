@@ -23,6 +23,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Validate CV and portfolio content
+        run: |
+          node --test scripts/portfolio-content.test.mjs
+          node scripts/validate-content.mjs
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
