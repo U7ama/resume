@@ -1,0 +1,8 @@
+# Local test and preview artifacts
+output/
+.DS_Store
+*.log
+
+# Hosting CLI state
+.vercel/
+.wrangler/

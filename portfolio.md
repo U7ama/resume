@@ -143,7 +143,7 @@
 ### copilot-travel | Copilot Travel | Travel / Web Component
 
 - featured | 2
-- summary | A travel widget for searching and comparing flights, selecting seats and baggage, and integrating booking functionality into other websites.
+- summary | A versatile Travel Widget that serves as a comprehensive tool for flight search and customization. It is a plug-and-play web component designed for seamless integration with any website
 - detail | Built as a Next.js and TypeScript frontend packaged as a reusable web component with Stencil.js and Bit.
 - detail | Used Apollo GraphQL subgraphs and serverless functions deployed across GCP, AWS, and Azure, with load balancing for performance and availability.
 - detail | The architecture was designed as a plug-and-play component that could work independently of the host website technology.
@@ -249,7 +249,7 @@
 
 ### roomph | Roomph.pk | Hospitality / Booking
 
-- summary | A hotel discovery and booking application built during my role at Stash Technologies.
+- summary | Roomph.pk is a Hotel Booking Company in Pakistan. Built using React.js and Node.js
 - detail | Built React interfaces for browsing properties, viewing hotel information, managing profiles, and completing booking flows.
 - detail | Developed Node.js REST APIs backed by MongoDB and improved performance by reducing redundant rendering and API requests.
 - technologies | React, Node.js, MongoDB, REST APIs, Bootstrap
@@ -270,9 +270,9 @@
 - technologies | React, DatoCMS, GraphQL
 - video | youtube | Tc7DLJVtETo | Pixel Copy demonstration
 
-### xecutors-platforms | Xecutors Digital Solutions | Travel / Enterprise
+### xecutors-platforms | Xecutors | Travel / Enterprise
 
-- summary | Subscription-based digital products and integrations created during my Full Stack Developer role at Xecutors.
+- summary | Xecutors provides subscription-based digital solutions
 - technologies | Next.js, Node.js, GraphQL, PostgreSQL, Cloud Functions
 - link | Website | https://www.xecutors.com/
 
