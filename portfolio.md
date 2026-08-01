@@ -2,7 +2,7 @@
 
 # Usama Aslam
 
-> Full Stack Developer | AI & SaaS
+> Full Stack Engineer | AI & Cloud
 
 ## Profile
 
@@ -14,7 +14,7 @@
 - discipline | React
 - discipline | Next.js
 - discipline | Node.js
-- discipline | AI & SaaS
+- discipline | AI & Cloud
 
 ## Contact
 
@@ -61,7 +61,7 @@
 
 ## Skills
 
-### frontend | Frontend
+### frontend | Frontend and Testing
 
 - item | React.js
 - item | Next.js
@@ -70,6 +70,7 @@
 - item | Tailwind CSS
 - item | HTML
 - item | CSS
+- item | Playwright
 - item | Dashboards
 - item | Three.js
 - item | Framer Motion

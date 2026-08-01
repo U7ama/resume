@@ -11,23 +11,23 @@ const REQUIRED_CV_HEADINGS = [
 ];
 
 const [cvMarkdown, portfolioMarkdown, resumePage] = await Promise.all([
-  readFile('cv.md', 'utf8'),
+  readFile('resume.md', 'utf8'),
   readFile('portfolio.md', 'utf8'),
   readFile('index.html', 'utf8'),
 ]);
 
 for (const heading of REQUIRED_CV_HEADINGS) {
   if (!cvMarkdown.includes(heading)) {
-    throw new Error(`cv.md is missing required heading: ${heading}`);
+    throw new Error(`resume.md is missing required heading: ${heading}`);
   }
 }
 
 if (/portfolio-schema\s*:/i.test(cvMarkdown)) {
-  throw new Error('cv.md must remain independent of the portfolio content schema.');
+  throw new Error('resume.md must remain independent of the portfolio content schema.');
 }
 
-if (!resumePage.includes('cv.md') || resumePage.includes('portfolio.md')) {
-  throw new Error('The resume page must load cv.md only.');
+if (!resumePage.includes('resume.md') || resumePage.includes('portfolio.md')) {
+  throw new Error('The resume page must load resume.md only.');
 }
 
 const cvUrls = new Set([
@@ -44,14 +44,14 @@ for (const url of cvUrls) {
   try {
     parsed = new URL(url);
   } catch {
-    throw new Error(`cv.md contains an invalid absolute URL: ${url}`);
+    throw new Error(`resume.md contains an invalid absolute URL: ${url}`);
   }
 
   if (!allowedProtocols.has(parsed.protocol)) {
-    throw new Error(`cv.md contains an unsupported URL protocol: ${url}`);
+    throw new Error(`resume.md contains an unsupported URL protocol: ${url}`);
   }
   if (!resumePage.includes(`href="${url}"`)) {
-    throw new Error(`The static resume fallback is missing a cv.md link: ${url}`);
+    throw new Error(`The static resume fallback is missing a resume.md link: ${url}`);
   }
 }
 

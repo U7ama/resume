@@ -217,7 +217,7 @@ Rewrite once if any check fails.
 
 ## Candidate dossier: Usama Aslam
 
-<!-- Verified against cv.md, portfolio.md, and supplied Upwork/LinkedIn profile exports on 2026-07-15. The application defaults, AI-assisted workflow, C# edge/Windows details, approved project-link policy, and Roomph recommendation story were also confirmed directly by Usama on 2026-07-15. Refresh availability, start timing, rate, roles, badges, earnings, hours, and project links when they change. -->
+<!-- Verified against resume.md, portfolio.md, and supplied Upwork/LinkedIn profile exports on 2026-07-15. The application defaults, AI-assisted workflow, C# edge/Windows details, approved project-link policy, and Roomph recommendation story were also confirmed directly by Usama on 2026-07-15. Refresh availability, start timing, rate, roles, badges, earnings, hours, and project links when they change. -->
 
 ### Positioning and verified platform facts
 
