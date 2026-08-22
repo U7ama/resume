@@ -9,6 +9,7 @@ const REQUIRED_CV_HEADINGS = [
   '## Education',
   '## Selected Projects',
 ];
+const FUTURE_FEATURE_MARKER = 'F* Future feature (not implemented yet) —';
 
 const [cvMarkdown, portfolioMarkdown, resumePage] = await Promise.all([
   readFile('resume.md', 'utf8'),
@@ -24,6 +25,10 @@ for (const heading of REQUIRED_CV_HEADINGS) {
 
 if (/portfolio-schema\s*:/i.test(cvMarkdown)) {
   throw new Error('resume.md must remain independent of the portfolio content schema.');
+}
+
+if (cvMarkdown.includes('F*')) {
+  throw new Error('resume.md must not contain future-feature markers.');
 }
 
 if (!resumePage.includes('resume.md') || resumePage.includes('portfolio.md')) {
@@ -56,6 +61,39 @@ for (const url of cvUrls) {
 }
 
 const portfolio = parsePortfolioMarkdown(portfolioMarkdown);
+const futureDetails = portfolio.projects.flatMap((project) =>
+  project.details.filter((detail) => detail.startsWith('F*')),
+);
+const rawFutureLines = portfolioMarkdown
+  .split(/\r?\n/)
+  .filter((line) => line.includes('F*'));
+
+if (futureDetails.length !== rawFutureLines.length) {
+  throw new Error('Future-feature markers are allowed only in portfolio project details.');
+}
+
+if (rawFutureLines.some((line) => !line.includes(FUTURE_FEATURE_MARKER))) {
+  throw new Error(`Every portfolio future-feature line must include: ${FUTURE_FEATURE_MARKER}`);
+}
+
+for (const detail of futureDetails) {
+  if (!detail.startsWith(FUTURE_FEATURE_MARKER)) {
+    throw new Error(`Future feature must start with: ${FUTURE_FEATURE_MARKER}`);
+  }
+}
+
+for (const project of portfolio.projects) {
+  if (project.technologies.some((technology) => technology.includes('F*'))) {
+    throw new Error(`Project technologies must not contain future markers: ${project.id}`);
+  }
+}
+
+for (const entry of portfolio.experience) {
+  if ([entry.summary, ...entry.details].some((detail) => detail.includes('F*'))) {
+    throw new Error(`Employment achievements must not contain future markers: ${entry.id}`);
+  }
+}
+
 console.log(
-  `Content validation passed: CV is independent with ${cvUrls.size} links; portfolio has ${portfolio.projects.length} projects.`,
+  `Content validation passed: CV is independent with ${cvUrls.size} links; portfolio has ${portfolio.projects.length} projects and ${futureDetails.length} explicit future features.`,
 );

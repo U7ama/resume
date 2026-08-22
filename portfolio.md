@@ -2,19 +2,20 @@
 
 # Usama Aslam
 
-> Full Stack Engineer | AI & Cloud
+> Full-Stack Engineer | Applied AI
 
 ## Profile
 
-- summary | Full stack engineer with 4+ years building SaaS products, dashboards, AI features, APIs, and cloud systems for startups, teams, and businesses.
-- summary | Strong in React, Next.js, Node.js, TypeScript, Python/FastAPI, PostgreSQL, MongoDB, Docker, AWS, GCP, Azure IoT, payments, deployment, documentation, and handoff.
+- summary | Full-stack engineer with 4+ years delivering SaaS products, AI-enabled workflows, APIs, cloud systems, and real-time AV/IoT platforms for startups, teams, and businesses.
+- summary | Implemented tenant-scoped AI guidance and reviewed AI-assisted imports for AlignAV, plus Gemini image understanding and OpenAI product integrations.
+- summary | Delivered Applied AI architectures including multi-tenant pgvector RAG, bounded agent loops, Zod schema validation, approval controls, signed n8n automations, and MCP integrations.
 - summary | My computer science journey began in 2018 at PMAS Arid Agriculture University and grew through product work in travel, hospitality, healthcare, eCommerce, cloud infrastructure, AI, and AV/IoT monitoring.
 - summary | I enjoy combining practical engineering, problem-solving, and creative presentation, including the interactive 3D and desktop-style portfolio experiences linked below.
 - discipline | Full Stack
-- discipline | React
-- discipline | Next.js
-- discipline | Node.js
-- discipline | AI & Cloud
+- discipline | Applied AI
+- discipline | LLM Integrations
+- discipline | Cloud & IoT
+- discipline | Web & Mobile
 
 ## Contact
 
@@ -33,14 +34,17 @@
 ### freelance-upwork | Full Stack Engineer | Freelance / Upwork | Remote | Jul 2024 - Present
 
 - website | https://www.upwork.com/freelancers/usamaa241?mp_source=share
-- summary | Build AI SaaS platforms, dashboards, internal tools, Shopify and API products, and automations for Upwork and direct clients; $10K+ earnings and 2,500+ tracked hours.
+- summary | Build AI-enabled SaaS platforms, dashboards, internal tools, Shopify and API products, and automations for Upwork and direct clients; $10K+ earnings and 2,500+ tracked hours.
 - detail | Delivered AlignAV asset management and real-time AV/IoT monitoring with Next.js, Azure IoT Hub and Edge, Node.js, Python, C#, Docker, Cosmos DB, WebSockets, and Azure DevOps.
+- detail | Implemented tenant-scoped, read-only AI assistance over permitted room and device data plus knowledge articles for cited troubleshooting guidance.
+- detail | Implemented AI-assisted import mapping and warnings with human review before records are committed.
 - detail | Work across product discovery, frontend and backend delivery, integrations, deployment, documentation, and client handoff.
 
 ### olumi-tech | Full Stack Developer | Olumi Tech | Remote | Nov 2023 - Feb 2025
 
 - summary | Worked remotely on full stack web applications from initial implementation through integrations and deployment support.
 - detail | Used React, Node.js, Python/FastAPI, AWS, GCP, Firebase, SQL, Stripe, Shopify, OAuth, Mailgun, OpenAI, and Gemini.
+- detail | Integrated Gemini image understanding for ingredient detection and dietary-aware recipe discovery in Cool Potato, plus OpenAI-assisted diary functionality in Diary Synergy.
 - detail | Contributed across Sunridge Medical, Lisbon Hop On, Beetkom, MedLab QCS, Levante Cuisine, Cool Potato, and Diary Synergy.
 
 ### xecutors | Full Stack Developer | Xecutors | Islamabad | Aug 2022 - Oct 2023
@@ -88,16 +92,31 @@
 - item | Cron jobs
 - item | Third-party integrations
 
-### ai-cloud | AI and Cloud
+### applied-ai-delivered | Applied AI — Delivered
 
-- item | OpenAI
-- item | Claude
-- item | Gemini
-- item | LLM integrations
+- item | Tenant-scoped AI assistants
+- item | Cited AI guidance
+- item | AI-assisted imports
+- item | Multimodal Gemini image analysis
+- item | OpenAI and Gemini integrations
+- item | Structured outputs and runtime validation
+- item | Streaming AI APIs and durable SSE replay
+- item | PostgreSQL/pgvector RAG with FTS and RRF
+- item | Bounded tenant-bound tool workflows and agents
+- item | AI evaluations, regression testing, and observability
+- item | Prompt-injection defenses, approvals, idempotency, and audit trails
+- item | Signed n8n automation and read-only MCP integration
+
+### ai-cloud | Cloud and Delivery
+
 - item | AWS
 - item | GCP
 - item | Azure IoT Hub and Edge
 - item | Docker
+- item | Kubernetes
+- item | Terraform
+- item | CI/CD
+- item | Observability
 - item | Vercel
 - item | Cloudflare
 
@@ -126,24 +145,35 @@
 
 - detail | Completed foundational Python programming coursework and exercises.
 
-### fsc-pre-engineering | FSC Pre Engineering | Punjab College | Gujranwala | 2016 - 2018
-
-- detail | Completed pre-engineering studies before beginning the BSCS program.
-
 ## Projects
+
+### deviceops-ai-copilot | DeviceOps AI Copilot | Applied AI / SaaS / IoT
+
+- featured | 1
+- summary | A production-grade Applied AI and IoT copilot for device-operations teams, combining multi-tenant RAG, bounded agentic workflows, approval controls, n8n automation, and an Expo technician client.
+- detail | Built a TypeScript workspace with Next.js, PostgreSQL Row-Level Security, pgvector semantic retrieval, PostgreSQL full-text search, and reciprocal-rank fusion for cited troubleshooting guidance.
+- detail | Implemented structured diagnoses with Zod validation, tenant-bound read-only tools, prompt-injection defenses, approval-gated incident proposals, idempotency, audit events, and durable SSE run timelines.
+- detail | Added pg-boss workers and a transactional outbox, signed n8n incident routing with replay protection, and a read-only MCP adapter over authorized application services.
+- detail | Created an Expo technician workflow for secure sign-in, room and device context, reconnectable run status, citations, uncertainty, and approval status.
+- detail | Added a 40-case evaluation suite plus unit, API-smoke, contract, MCP, and local load checks for retrieval quality, output validity, isolation, retries, and failure handling.
+- technologies | Next.js, TypeScript, PostgreSQL, pgvector, Drizzle ORM, pg-boss, Zod, n8n, Expo, Playwright, Docker, MCP, SSE
+- link | Core Repository | https://github.com/U7ama/deviceops-ai-copilot
+- link | Mobile App | https://github.com/U7ama/deviceops-mobile
+- link | Automations | https://github.com/U7ama/deviceops-automations
 
 ### alignav-monitoring | AlignAV Monitoring | AI / SaaS / IoT
 
-- featured | 1
+- featured | 2
 - summary | Asset management and real-time AV/IoT monitoring for rooms, devices, environments, and operational teams.
 - detail | Delivered frontend dashboards, backend and edge services, live device state, status aggregation, and cloud-connected monitoring workflows.
+- detail | Implemented tenant-scoped, read-only AI assistance over permitted room and device data plus knowledge articles for cited troubleshooting guidance.
+- detail | Implemented AI-assisted import mapping and warnings with human review before records are committed.
 - detail | Worked across Next.js, Node.js, Python, C#, Azure IoT Hub and Edge, Cosmos DB, Docker, WebSockets, and Azure DevOps.
 - technologies | Next.js, TypeScript, Node.js, Python, C#, Azure IoT, Cosmos DB, Docker, WebSockets
 - link | Website | https://www.alignav.com/
 
 ### copilot-travel | Copilot Travel | Travel / Web Component
 
-- featured | 2
 - summary | A versatile Travel Widget that serves as a comprehensive tool for flight search and customization. It is a plug-and-play web component designed for seamless integration with any website
 - detail | Built as a Next.js and TypeScript frontend packaged as a reusable web component with Stencil.js and Bit.
 - detail | Used Apollo GraphQL subgraphs and serverless functions deployed across GCP, AWS, and Azure, with load balancing for performance and availability.
@@ -154,8 +184,6 @@
 - video | youtube | Nrv5DMTFNUw | Copilot Travel flight-booking demonstration
 
 ### portfolio-suite | Interactive Portfolio Suite | Portfolio / Three.js
-
-- featured | 3
 - summary | A connected set of main, 3D, desktop-style OS, and printable resume experiences presenting the same developer portfolio in different visual formats.
 - detail | The 3D experience uses Three.js and a Blender-authored environment, while its monitor securely embeds the standalone React OS portfolio.
 - detail | The OS experience recreates a desktop interface while rendering portfolio pages natively and forwarding a small trusted input-event protocol to the 3D parent.
@@ -168,10 +196,12 @@
 
 ### cool-potato | Cool Potato | AI / SaaS
 
+- featured | 3
 - summary | An AI-powered recipe application that detects food items in images and suggests personalized recipes based on user preferences and dietary needs, including diabetic-friendly options.
+- detail | Integrated Gemini image understanding to identify ingredients from food images and combine them with dietary-aware recipe discovery.
 - detail | A potato character presents recipes in an engaging format, while community features help users organize and participate in food festivals.
+- detail | F* Future feature (not implemented yet) — add schema-validated ingredient extraction, a 30-case evaluation dataset, safety and quality checks, and cited dietary-information retrieval.
 - technologies | Node.js, Gemini, MongoDB, Mongoose, Google Cloud Run, Docker
-- link | Google Play | https://play.google.com/store/apps/details?id=com.coolpotato
 - link | Repository | https://github.com/U7ama/cool-potato
 - link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
 
@@ -179,6 +209,7 @@
 
 - summary | An AI-powered daily diary application that helps users write entries based on their mood.
 - detail | Includes a subscription community where users can discover, connect, and chat with like-minded people.
+- detail | F* Future feature (not implemented yet) — add user-controlled semantic journal retrieval, privacy controls, safety evaluations, and deletion-aware memory.
 - technologies | Node.js, OpenAI API, Firebase, Cloud Firestore, Google App Engine
 - link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
 
@@ -191,6 +222,7 @@
 ### shopify-invoicing | Shopify Invoicing App | eCommerce / SaaS
 
 - summary | A Shopify-connected invoicing application delivered through freelance product and API integration work.
+- detail | F* Future feature (not implemented yet) — add n8n order and invoice automation, AI exception classification, idempotent processing, and human approval before consequential actions.
 - technologies | Shopify, Node.js, APIs, SaaS
 - link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
 
@@ -199,6 +231,14 @@
 - summary | Integrations connecting OpenAI, Claude, Gemini, and other APIs to production workflows, dashboards, and automation tools.
 - technologies | OpenAI, Claude, Gemini, Node.js, Python, REST APIs
 - link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
+
+### customer-support-ai-backend | Customer Support AI Backend | Applied AI / Backend
+
+- summary | A FastAPI backend for authenticated support tickets and AI-assisted responses backed by PostgreSQL.
+- detail | Uses JWT authentication, SQLAlchemy repositories, Pydantic schemas, Alembic migrations, Docker Compose, and a Groq-compatible model API integration.
+- detail | F* Future feature (not implemented yet) — add pgvector RAG with citations, bounded tools, evaluation suites, and n8n escalation with human handoff.
+- technologies | Python, FastAPI, PostgreSQL, SQLAlchemy, Pydantic, Groq API, Docker
+- link | Repository | https://github.com/U7ama/Customer-Support-Assistant-Backend-Assessment
 
 ### lisbon-hop-on | Lisbon Hop On | Travel / Web Application
 

@@ -1,10 +1,10 @@
 # Usama Aslam
 
-> Full Stack Engineer | AI & Cloud
+> Full-Stack Engineer | Applied AI
 
-Full-stack engineer with 4+ years delivering production web, AI, API, cloud, and real-time systems across AV/IoT, travel, healthcare, hospitality, and e-commerce.
+Full-stack engineer with 4+ years delivering SaaS, Applied AI, APIs, cloud, and real-time AV/IoT systems across travel, healthcare, hospitality, and e-commerce.
 
-Owns end-to-end architecture, React/Next.js and Node.js/Python delivery, testing, deployment, documentation, and client handoff.
+Combines React/Next.js, Node.js, and Python/FastAPI delivery with structured AI outputs, cited RAG, bounded agent workflows, approval controls, n8n automation, MCP integration, and evaluation-led engineering.
 
 ## Display Options
 
@@ -15,7 +15,7 @@ Owns end-to-end architecture, React/Next.js and Node.js/Python delivery, testing
 ## Contact
 
 - email | mailto:u7amaaslam@gmail.com | u7amaaslam@gmail.com
-- website | https://portfolio.usamaaslam.site/ | usamaaslam.site
+- website | https://usamaaslam.site/ | usamaaslam.site
 - linkedin | https://www.linkedin.com/in/usama-aslam-638584194/ | linkedin.com/in/usama-aslam-638584194
 - github | https://github.com/U7ama | github.com/U7ama
 - phone | tel:+923016441046 | +92 301 6441046 · Lahore, Pakistan
@@ -25,13 +25,14 @@ Owns end-to-end architecture, React/Next.js and Node.js/Python delivery, testing
 
 ### Full Stack Engineer | Freelance / Upwork (Remote) | Jul 2024 - Present
 
-- Build AI SaaS platforms, dashboards, internal tools, Shopify/API products, and automations for Upwork and direct clients, with $10K+ in earnings and 2,500+ tracked hours.
-- Delivered AlignAV asset management and real-time AV/IoT monitoring across dashboards, edge services, and a C# monitoring agent using Next.js, Node.js/Python, Azure IoT Hub/Edge, Cosmos DB, Docker, WebSockets, and CI/CD.
-- Own delivery from product discovery through implementation, testing, integrations, deployment, documentation, and client handoff.
+- Build AI-enabled SaaS platforms, dashboards, internal tools, Shopify/API products, and automations for Upwork and direct clients, with $10K+ in earnings and 2,500+ tracked hours.
+- Delivered AlignAV asset management and real-time AV/IoT monitoring across dashboards, edge services, and a C# edge/Windows monitoring service using Next.js, Node.js/Python, Azure IoT Hub/Edge, Cosmos DB, Docker, WebSockets, and CI/CD.
+- Implemented tenant-scoped, read-only AI assistance over permitted room/device data and knowledge articles for cited troubleshooting guidance, plus AI-assisted import mapping and warnings with human review before records are committed.
 
 ### Full Stack Developer | Olumi Tech (Remote) | Nov 2023 - Feb 2025
 
 - Delivered full-stack features, APIs, integrations, and deployment support across seven healthcare, travel, e-commerce, and productivity products using React, Node.js, FastAPI, AWS/GCP, Firebase, SQL, Stripe, Shopify, and AI APIs.
+- Integrated Gemini image understanding for ingredient detection and dietary-aware recipe discovery in Cool Potato, and OpenAI-assisted diary functionality in Diary Synergy.
 
 ### Full Stack Developer | Xecutors (Islamabad) | Aug 2022 - Oct 2023
 
@@ -44,20 +45,18 @@ Owns end-to-end architecture, React/Next.js and Node.js/Python delivery, testing
 
 ## Technical Skills
 
-- Frontend/Testing | React, Next.js, TypeScript, JavaScript, Tailwind CSS, Material UI, HTML/CSS, Jest, Playwright, integration/E2E testing, Three.js/WebGL, Stencil.js, and Webpack/Vite.
-- Backend/APIs | Node.js, Python, FastAPI, C#, REST, GraphQL/Hasura, WebSockets, OAuth, OpenAPI, Kong API Gateway, Redis, serverless functions, and queues.
-- AI/Cloud/DevOps | Generative AI, OpenAI, Claude, Gemini, Git, CI/CD, observability, AWS, GCP, Azure, Docker, Kubernetes, Terraform, Cloudflare, Azure DevOps, and Linux.
-- Data/Integrations | PostgreSQL, MongoDB, MySQL, Firebase, Cosmos DB, Stripe/Braintree, Shopify, Twilio, SendGrid/Mailgun, Amadeus, and DocuSign.
+- Applied AI — Delivered | Scoped AI assistants, cited AI guidance, AI-assisted imports, multimodal Gemini image analysis, OpenAI/Gemini integrations, structured outputs, streaming APIs, and evaluation-led AI delivery.
+- Applied AI — Production Patterns | PostgreSQL/pgvector RAG with FTS/RRF, bounded tenant-bound tools and agents, prompt-injection defenses, human approvals, idempotency/audit controls, n8n automation, MCP, and AI observability.
+- Full Stack | React, Next.js, TypeScript, Node.js, Python/FastAPI, C#, REST/GraphQL, WebSockets, PostgreSQL, MongoDB, Redis, Playwright, and integration/E2E testing.
+- Cloud/Delivery & Integrations | AWS, GCP, Azure/IoT, Docker, Kubernetes, Terraform, CI/CD, observability, Shopify, Stripe/Braintree, Twilio, SendGrid, Amadeus, and DocuSign.
 
 ## Education
 
 ### BSCS, CGPA 3.30 | PMAS Arid Agriculture University, Rawalpindi | 2018 - 2022
 
-### FSc Pre-Engineering | Punjab College, Gujranwala | 2016 - 2018
-
 ## Selected Projects
 
-- [AlignAV Monitoring](https://www.alignav.com/) — centralized asset management and real-time AV/IoT monitoring.
+- [AlignAV Monitoring](https://www.alignav.com/) — AV/IoT monitoring with scoped AI troubleshooting guidance and reviewed AI-assisted imports.
+- [Cool Potato](https://github.com/U7ama/cool-potato) — Gemini image understanding for ingredient detection and dietary-aware recipe discovery.
 - [Copilot Travel](https://copilottravel.com/) — integrated flight search and booking for travel businesses.
 - [Sunridge Medical](https://sunridgemedical.com/) — clinic operations and patient-management workflows.
-- Interactive portfolio — [Main](https://usamaaslam.site/), [3D](https://3d.usamaaslam.site/), and [OS](https://os.usamaaslam.site/) experiences.

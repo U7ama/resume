@@ -7,6 +7,8 @@ import {
 } from './portfolio-content.mjs';
 
 const validMarkdown = await readFile('portfolio.md', 'utf8');
+const resumeMarkdown = await readFile('resume.md', 'utf8');
+const FUTURE_FEATURE_MARKER = 'F* Future feature (not implemented yet) —';
 
 test('parses the published portfolio contract', () => {
   const portfolio = parsePortfolioMarkdown(validMarkdown);
@@ -15,9 +17,34 @@ test('parses the published portfolio contract', () => {
   assert.deepEqual(
     portfolio.projects
       .filter((project) => project.featuredOrder !== null)
-      .map((project) => project.featuredOrder),
-    [1, 2, 3],
+      .sort((a, b) => a.featuredOrder - b.featuredOrder)
+      .map((project) => project.id),
+    ['deviceops-ai-copilot', 'alignav-monitoring', 'cool-potato'],
   );
+});
+
+test('keeps future features explicit and out of the resume', () => {
+  const portfolio = parsePortfolioMarkdown(validMarkdown);
+  const futureDetails = portfolio.projects.flatMap((project) =>
+    project.details.filter((detail) => detail.startsWith('F*')),
+  );
+  const rawFutureLines = validMarkdown.split(/\r?\n/).filter((line) => line.includes('F*'));
+
+  assert.ok(futureDetails.length >= 1);
+  assert.equal(futureDetails.length, rawFutureLines.length);
+  assert.ok(rawFutureLines.every((line) => line.includes(FUTURE_FEATURE_MARKER)));
+  assert.ok(futureDetails.every((detail) => detail.startsWith(FUTURE_FEATURE_MARKER)));
+  assert.ok(
+    portfolio.projects.every((project) =>
+      project.technologies.every((technology) => !technology.includes('F*')),
+    ),
+  );
+  assert.ok(
+    portfolio.experience.every((entry) =>
+      [entry.summary, ...entry.details].every((detail) => !detail.includes('F*')),
+    ),
+  );
+  assert.equal(resumeMarkdown.includes('F*'), false);
 });
 
 test('rejects unsupported schema versions', () => {
