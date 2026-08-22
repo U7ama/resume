@@ -155,7 +155,7 @@
 - detail | Implemented structured diagnoses with Zod validation, tenant-bound read-only tools, prompt-injection defenses, approval-gated incident proposals, idempotency, audit events, and durable SSE run timelines.
 - detail | Added pg-boss workers and a transactional outbox, signed n8n incident routing with replay protection, and a read-only MCP adapter over authorized application services.
 - detail | Created an Expo technician workflow for secure sign-in, room and device context, reconnectable run status, citations, uncertainty, and approval status.
-- detail | Added a 40-case evaluation suite plus unit, API-smoke, contract, MCP, and local load checks for retrieval quality, output validity, isolation, retries, and failure handling.
+- detail | Added a 40-case evaluation suite plus unit, API-smoke, contract, MCP, and load checks for retrieval quality, output validity, isolation, retries, and failure handling.
 - technologies | Next.js, TypeScript, PostgreSQL, pgvector, Drizzle ORM, pg-boss, Zod, n8n, Expo, Playwright, Docker, MCP, SSE
 - link | Core Repository | https://github.com/U7ama/deviceops-ai-copilot
 - link | Mobile App | https://github.com/U7ama/deviceops-mobile
