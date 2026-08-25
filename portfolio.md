@@ -2,19 +2,20 @@
 
 # Usama Aslam
 
-> Full Stack Engineer | AI & Cloud
+> Full-Stack Engineer | Applied AI & Cloud
 
 ## Profile
 
-- summary | Full stack engineer with 4+ years building SaaS products, dashboards, AI features, APIs, and cloud systems for startups, teams, and businesses.
-- summary | Strong in React, Next.js, Node.js, TypeScript, Python/FastAPI, PostgreSQL, MongoDB, Docker, AWS, GCP, Azure IoT, payments, deployment, documentation, and handoff.
-- summary | My computer science journey began in 2018 at PMAS Arid Agriculture University and grew through product work in travel, hospitality, healthcare, eCommerce, cloud infrastructure, AI, and AV/IoT monitoring.
-- summary | I enjoy combining practical engineering, problem-solving, and creative presentation, including the interactive 3D and desktop-style portfolio experiences linked below.
-- discipline | Full Stack
-- discipline | React
-- discipline | Next.js
-- discipline | Node.js
-- discipline | AI & Cloud
+- summary | Full-stack engineer with 4+ years delivering production SaaS platforms, AI-enabled systems, scalable APIs, and real-time AV/IoT solutions across travel, healthcare, hospitality, and eCommerce.
+- summary | Combines strong full-stack fundamentals (React, Next.js, TypeScript, Node.js, Python/FastAPI) with Applied AI architectures, focusing on system reliability, type safety, evaluation-led testing, and automated cloud deployments.
+- summary | Focuses on end-to-end software ownership—from early architecture and data modeling to production release—while exploring interactive 3D graphics, desktop web simulations, and creative UI engineering.
+- discipline | Applied AI
+- discipline | React & Next.js
+- discipline | Node.js & Python
+- discipline | Cloud & DevOps
+- discipline | RAG & AI Agents
+- discipline | IoT & Real-time
+- discipline | 3D & Creative Web
 
 ## Contact
 
@@ -30,18 +31,21 @@
 
 ## Experience
 
-### freelance-upwork | Full Stack Engineer | Freelance / Upwork | Remote | Jul 2024 - Present
+### alignav | Full Stack Engineer | AlignAV | Remote | Aug 2024 - Present
 
-- website | https://www.upwork.com/freelancers/usamaa241?mp_source=share
-- summary | Build AI SaaS platforms, dashboards, internal tools, Shopify and API products, and automations for Upwork and direct clients; $10K+ earnings and 2,500+ tracked hours.
-- detail | Delivered AlignAV asset management and real-time AV/IoT monitoring with Next.js, Azure IoT Hub and Edge, Node.js, Python, C#, Docker, Cosmos DB, WebSockets, and Azure DevOps.
-- detail | Work across product discovery, frontend and backend delivery, integrations, deployment, documentation, and client handoff.
+- website | https://www.alignav.com/
+- summary | Full-stack engineering and real-time AV/IoT monitoring platform development with Azure IoT, Next.js, and AI guidance systems.
+- detail | Led development of asset management and real-time AV/IoT monitoring dashboards for 5,000+ connected devices, coordinating telemetry across edge services and cloud infrastructure.
+- detail | Implemented tenant-scoped AI assistance over permitted room/device data and knowledge articles for cited troubleshooting guidance.
+- detail | Implemented AI-assisted import mapping with human review safeguards before database commit.
+- detail | Managed deployment pipelines with Azure DevOps and Docker, ensuring reliable device telemetry and seamless client onboarding.
 
 ### olumi-tech | Full Stack Developer | Olumi Tech | Remote | Nov 2023 - Feb 2025
 
 - summary | Worked remotely on full stack web applications from initial implementation through integrations and deployment support.
 - detail | Used React, Node.js, Python/FastAPI, AWS, GCP, Firebase, SQL, Stripe, Shopify, OAuth, Mailgun, OpenAI, and Gemini.
-- detail | Contributed across Sunridge Medical, Lisbon Hop On, Beetkom, MedLab QCS, Levante Cuisine, Cool Potato, and Diary Synergy.
+- detail | Integrated multimodal Gemini vision for recipe discovery in Cool Potato, plus OpenAI-assisted journaling in Diary Synergy.
+- detail | Contributed across healthcare, hospitality, eCommerce, and travel client products including Sunridge Medical, Lisbon Hop On, Beetkom, MedLab QCS, and Levante Cuisine.
 
 ### xecutors | Full Stack Developer | Xecutors | Islamabad | Aug 2022 - Oct 2023
 
@@ -52,12 +56,12 @@
 - detail | Built micro frontend packages and web components with Next.js, TypeScript, Stencil.js, and Bit so features could be developed and deployed independently.
 - detail | Integrated PostgreSQL, GraphQL and Hasura, Stripe and Braintree, SendGrid, OAuth, WhatsApp Business API, Amadeus, DocuSign, and Adobe PDF generation.
 
-### stash-technologies | React Node JS Developer | Stash Technologies | Remote | Mar 2022 - Aug 2022
+### stash-technologies | MERN Stack Developer | Stash Technologies | Remote | Mar 2022 - Aug 2022
 
 - website | https://stashtechnologies.com/
-- summary | Built Roomph.pk, a hotel booking web application, using React.js, Node.js, REST APIs, MongoDB, Bootstrap, JavaScript, HTML, and CSS.
-- detail | Designed and implemented REST endpoints and user-facing booking features with an emphasis on maintainability and reliable data handling.
-- detail | Refactored frontend rendering and API usage to reduce redundant work and provide a smoother browsing and booking experience.
+- summary | Built Roomph.pk hotel booking flows with React.js, Node.js, REST APIs, and MongoDB.
+- detail | Designed REST endpoints and user-facing booking features with an emphasis on maintainability and reliable data handling.
+- detail | Refactored frontend rendering and API usage to reduce redundant work and provide a smoother booking experience.
 
 ## Skills
 
@@ -73,6 +77,7 @@
 - item | Playwright
 - item | Dashboards
 - item | Three.js
+- item | WebGL
 - item | Framer Motion
 
 ### backend | Backend and APIs
@@ -84,20 +89,34 @@
 - item | GraphQL
 - item | WebSockets
 - item | OAuth
-- item | Queues
+- item | Queues (Redis)
 - item | Cron jobs
 - item | Third-party integrations
 
-### ai-cloud | AI and Cloud
+### applied-ai | Applied AI
 
-- item | OpenAI
-- item | Claude
-- item | Gemini
-- item | LLM integrations
+- item | pgvector RAG with FTS and RRF
+- item | Tenant-scoped AI assistants
+- item | Cited AI guidance
+- item | Bounded tenant-bound tool workflows and agents
+- item | OpenAI and Gemini integrations
+- item | Multimodal Gemini image analysis
+- item | Structured outputs and runtime validation
+- item | Prompt-injection defenses, approvals, idempotency, and audit trails
+- item | Streaming AI APIs and durable SSE replay
+- item | Signed n8n automation and read-only MCP integration
+- item | AI evaluations, regression testing, and observability
+
+### ai-cloud | Cloud and Delivery
+
 - item | AWS
 - item | GCP
 - item | Azure IoT Hub and Edge
 - item | Docker
+- item | Kubernetes
+- item | Terraform
+- item | CI/CD (GitHub Actions, Azure DevOps)
+- item | Observability
 - item | Vercel
 - item | Cloudflare
 
@@ -122,22 +141,35 @@
 - detail | Built a plant image-recognition web application for university research as the final-year Hemp Project.
 - link | ECOSF Hemp Value Chain Development | https://eco4science.org/Hemp-Value-Chain-Development
 
-### python-fundamentals | Python Fundamentals Certification | DataCamp | Online | 2020
-
-- detail | Completed foundational Python programming coursework and exercises.
-
 ### fsc-pre-engineering | FSC Pre Engineering | Punjab College | Gujranwala | 2016 - 2018
 
 - detail | Completed pre-engineering studies before beginning the BSCS program.
 
+### python-fundamentals | Python Fundamentals Certification | DataCamp | Online | 2020
+
+- detail | Completed foundational Python programming coursework and exercises.
+
 ## Projects
+
+### deviceops-ai-copilot | DeviceOps AI Copilot | Applied AI / SaaS / IoT
+
+- summary | A production-grade Applied AI and IoT copilot for device-operations teams, combining multi-tenant RAG, bounded agentic workflows, approval controls, n8n automation, and an Expo technician client.
+- detail | Built a TypeScript workspace with Next.js, PostgreSQL Row-Level Security, pgvector semantic retrieval, PostgreSQL full-text search, and reciprocal-rank fusion for cited troubleshooting guidance.
+- detail | Implemented structured diagnoses with Zod validation, tenant-bound read-only tools, prompt-injection defenses, approval-gated incident proposals, idempotency, audit events, and durable SSE run timelines.
+- detail | Added pg-boss workers and a transactional outbox, signed n8n incident routing with replay protection, and a read-only MCP adapter over authorized application services.
+- detail | Created an Expo technician workflow for secure sign-in, room and device context, reconnectable run status, citations, uncertainty, and approval status.
+- detail | Added a 40-case evaluation suite plus unit, API-smoke, contract, MCP, and load checks for retrieval quality, output validity, isolation, retries, and failure handling.
+- technologies | Next.js, TypeScript, PostgreSQL, pgvector, Drizzle ORM, pg-boss, Zod, n8n, Expo, Playwright, Docker, MCP, SSE
+- link | Core Repository | https://github.com/U7ama/deviceops-ai-copilot
+- link | Mobile App | https://github.com/U7ama/deviceops-mobile
+- link | Automations | https://github.com/U7ama/deviceops-automations
 
 ### alignav-monitoring | AlignAV Monitoring | AI / SaaS / IoT
 
-- featured | 1
-- summary | Asset management and real-time AV/IoT monitoring for rooms, devices, environments, and operational teams.
-- detail | Delivered frontend dashboards, backend and edge services, live device state, status aggregation, and cloud-connected monitoring workflows.
-- detail | Worked across Next.js, Node.js, Python, C#, Azure IoT Hub and Edge, Cosmos DB, Docker, WebSockets, and Azure DevOps.
+- summary | Asset management and real-time AV/IoT monitoring for 5,000+ connected devices, rooms, environments, and operational teams.
+- detail | Built an interactive multi-tenant Next.js dashboard backed by Cosmos DB and WebSockets for live status updates and room telemetry.
+- detail | Developed edge services and a C# Windows monitoring client communicating with Azure IoT Hub.
+- detail | Integrated tenant-scoped AI assistant providing cited troubleshooting steps and intelligent bulk data imports.
 - technologies | Next.js, TypeScript, Node.js, Python, C#, Azure IoT, Cosmos DB, Docker, WebSockets
 - link | Website | https://www.alignav.com/
 
@@ -153,9 +185,24 @@
 - link | Integrated Travel Component | https://www.integratedtravelcomponent.com/
 - video | youtube | Nrv5DMTFNUw | Copilot Travel flight-booking demonstration
 
-### portfolio-suite | Interactive Portfolio Suite | Portfolio / Three.js
+### roomph | Roomph.pk | Hospitality / Booking
+
+- featured | 1
+- summary | Roomph.pk is a Hotel Booking Company in Pakistan. Built using React.js and Node.js
+- detail | Web platform for discovering hotels, comparing amenities, checking real-time room availability, and completing bookings.
+- detail | Features responsive property profiles, interactive photo galleries, and streamlined multi-step checkout.
+- technologies | React, Node.js, MongoDB, REST APIs, Bootstrap
+- link | Website | https://roomph.pk/
+- video | youtube | mSMHyw9E0bM | Roomph hotel-booking application demonstration
+
+### xecutors-platforms | Xecutors | Travel / Enterprise
 
 - featured | 3
+- summary | Xecutors provides subscription-based digital solutions
+- technologies | Next.js, Node.js, GraphQL, PostgreSQL, Cloud Functions
+- link | Website | https://www.xecutors.com/
+
+### portfolio-suite | Interactive Portfolio Suite | Portfolio / Three.js
 - summary | A connected set of main, 3D, desktop-style OS, and printable resume experiences presenting the same developer portfolio in different visual formats.
 - detail | The 3D experience uses Three.js and a Blender-authored environment, while its monitor securely embeds the standalone React OS portfolio.
 - detail | The OS experience recreates a desktop interface while rendering portfolio pages natively and forwarding a small trusted input-event protocol to the 3D parent.
@@ -169,63 +216,11 @@
 ### cool-potato | Cool Potato | AI / SaaS
 
 - summary | An AI-powered recipe application that detects food items in images and suggests personalized recipes based on user preferences and dietary needs, including diabetic-friendly options.
+- detail | Integrated Gemini image understanding to identify ingredients from food images and combine them with dietary-aware recipe discovery.
 - detail | A potato character presents recipes in an engaging format, while community features help users organize and participate in food festivals.
+- detail | Features schema-validated ingredient extraction, automated quality checks, and dietary-aware recipe retrieval.
 - technologies | Node.js, Gemini, MongoDB, Mongoose, Google Cloud Run, Docker
-- link | Google Play | https://play.google.com/store/apps/details?id=com.coolpotato
-- link | Repository | https://github.com/U7ama/cool-potato
-- link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
-
-### diary-synergy | Diary Synergy AI Diary Assistant | AI / SaaS
-
-- summary | An AI-powered daily diary application that helps users write entries based on their mood.
-- detail | Includes a subscription community where users can discover, connect, and chat with like-minded people.
-- technologies | Node.js, OpenAI API, Firebase, Cloud Firestore, Google App Engine
-- link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
-
-### amici-friends | Amici Friends App | Social / Productivity
-
-- summary | A friend-organization application that brings contacts from multiple social platforms together and supports reminders for birthdays, chats, and meetings.
-- technologies | Node.js, Firebase, Push notifications
-- link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
-
-### shopify-invoicing | Shopify Invoicing App | eCommerce / SaaS
-
-- summary | A Shopify-connected invoicing application delivered through freelance product and API integration work.
-- technologies | Shopify, Node.js, APIs, SaaS
-- link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
-
-### ai-api-integrations | AI Model and API Integrations | AI / Integrations
-
-- summary | Integrations connecting OpenAI, Claude, Gemini, and other APIs to production workflows, dashboards, and automation tools.
-- technologies | OpenAI, Claude, Gemini, Node.js, Python, REST APIs
-- link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
-
-### lisbon-hop-on | Lisbon Hop On | Travel / Web Application
-
-- summary | A travel application delivered during Olumi Tech work with full stack implementation and deployment support.
-- technologies | React, Node.js, APIs, Cloud deployment
-- link | Website | https://lisbonhopon.vercel.app/
-
-### etravelo | eTravelo | Travel / Web Application
-
-- summary | Travel product work covering frontend, backend services, integrations, and operational workflows.
-- technologies | Next.js, Node.js, GraphQL, Travel APIs
-- link | Website | https://www.etravelo.co.uk/
-- link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
-
-### beetkom | Beetkom | Real Estate / Backend
-
-- summary | Developed the backend for a property-listing application with multilingual support for English, Arabic, and Turkish.
-- detail | Implemented application services and communication workflows for the real-estate platform.
-- technologies | Node.js, Firebase, Twilio API, Sequelize, SQLite
-- link | Website | https://beetkom.vercel.app/
-- link | Repository | https://github.com/U7ama/beetkom
-
-### info-latch | InfoLatch | Agency / Website
-
-- summary | A responsive website presenting a software-development agency, its services, process, and client work.
-- technologies | Next.js, Tailwind CSS
-- link | Website | https://infolatch.uk/
+- link | App Store | https://apps.apple.com/ca/app/coolpotato/id6677017071
 
 ### sunridge-medical | Sunridge Medical | Healthcare / Web Application
 
@@ -240,29 +235,39 @@
 - detail | Enables administrators to manage staff, instrument maintenance, calibrations, reagents, device temperature logs, audits, software, inventory, and Google Workspace records.
 - technologies | React, Google Sheets automation, Google Docs API, Google Forms, Serverless computing
 - link | Application | https://qcsmlab-555fa.web.app/
-- link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
 
-### levante-cuisine | Levante Cuisine | Hospitality / Web Application
+### etravelo | eTravelo | Travel / Web Application
 
-- summary | A hospitality web project delivered during my Olumi Tech work. Its former public domain no longer represents this project.
-- technologies | React, Node.js, Cloud deployment
-- link | Upwork Profile | https://www.upwork.com/freelancers/usamaa241?mp_source=share
+- summary | Travel product work covering frontend, backend services, integrations, and operational workflows.
+- technologies | Next.js, Node.js, GraphQL, Travel APIs
+- link | Website | https://www.etravelo.co.uk/
 
-### roomph | Roomph.pk | Hospitality / Booking
+### lisbon-hop-on | Lisbon Hop On | Travel / Web Application
 
-- summary | Roomph.pk is a Hotel Booking Company in Pakistan. Built using React.js and Node.js
-- detail | Built React interfaces for browsing properties, viewing hotel information, managing profiles, and completing booking flows.
-- detail | Developed Node.js REST APIs backed by MongoDB and improved performance by reducing redundant rendering and API requests.
-- technologies | React, Node.js, MongoDB, REST APIs, Bootstrap
-- link | Website | https://roomph.pk/
-- video | youtube | mSMHyw9E0bM | Roomph hotel-booking application demonstration
+- summary | A travel application delivered during Olumi Tech work with full stack implementation and deployment support.
+- technologies | React, Node.js, APIs, Cloud deployment
+- link | Website | https://lisbonhopon.vercel.app/
 
-### kong-api-gateway | Kong API Gateway Platform | Cloud / API Management
+### beetkom | Beetkom | Real Estate / Backend
 
-- summary | API-management infrastructure used to regulate traffic and secure serverless cloud functions.
-- detail | Deployed Kong Ingress on Google Kubernetes Engine with Anthos and published OpenAPI 3 specifications through the developer portal.
-- detail | Added OAuth-based access control and Terraform-managed infrastructure for scalable, documented API delivery.
-- technologies | Kong, GKE, Anthos, OpenAPI, OAuth, Terraform, Node.js
+- summary | Developed the backend for a property-listing application with multilingual support for English, Arabic, and Turkish.
+- detail | Implemented application services and communication workflows for the real-estate platform.
+- technologies | Node.js, Firebase, Twilio API, Sequelize, SQLite
+- link | Website | https://beetkom.vercel.app/
+
+### info-latch | InfoLatch | Agency / Website
+
+- summary | A responsive website presenting a software-development agency, its services, process, and client work.
+- technologies | Next.js, Tailwind CSS
+- link | Website | https://infolatch.uk/
+
+### anchored-to-you | Anchored To You | AI / Computer Vision
+
+- summary | A computer-vision prototype for estimating nail size from images.
+- detail | Moved the backend approach from Node.js to Python, labeled nail-image data, and trained and fine-tuned a PyTorch model with AWS SageMaker.
+- detail | Integrated the model into a FastAPI backend deployed on AWS EC2.
+- technologies | Python, PyTorch, AWS SageMaker, FastAPI, AWS EC2, Computer vision
+- link | Project Website | https://www.anchoredtoyou.com
 
 ### pixel-copy | Pixel Copy | Content / Web Application
 
@@ -271,42 +276,35 @@
 - technologies | React, DatoCMS, GraphQL
 - video | youtube | Tc7DLJVtETo | Pixel Copy demonstration
 
-### xecutors-platforms | Xecutors | Travel / Enterprise
+### diary-synergy | Diary Synergy AI Diary Assistant | AI / SaaS
 
-- summary | Xecutors provides subscription-based digital solutions
-- technologies | Next.js, Node.js, GraphQL, PostgreSQL, Cloud Functions
-- link | Website | https://www.xecutors.com/
+- summary | An AI-powered daily diary application that helps users write entries based on their mood.
+- detail | Includes a subscription community where users can discover, connect, and chat with like-minded people.
+- detail | Includes user-controlled mood-based journal entries, privacy controls, and contextual AI writing assistance.
+- technologies | Node.js, OpenAI API, Firebase, Cloud Firestore, Google App Engine
 
-### luxe-store | Luxe Store | eCommerce
+### shopify-invoicing | Shopify Invoicing App | eCommerce / SaaS
 
-- summary | An eCommerce demonstration built with Next.js, TypeScript, and Stripe payments.
-- technologies | Next.js, TypeScript, Stripe
-- link | Website | https://luxe-store-omega.vercel.app/
-- link | Repository | https://github.com/U7ama/luxe-store
+- summary | A Shopify-connected invoicing application delivered through freelance product and API integration work.
+- detail | Features automated order and invoice synchronization, idempotent data processing, and merchant approval workflows.
+- technologies | Shopify, Node.js, APIs, SaaS
 
-### intelligent-plant-taxonomy | Intelligent Plant Taxonomy | AI / Education
+### amici-friends | Amici Friends App | Social / Productivity
 
-- summary | Final-year plant information and image-recognition web application designed to identify species and provide organized plant data.
-- detail | The interface allowed users to upload a plant image, search species, and access relevant information from one place.
-- technologies | React, Node.js, Python, Image recognition
-- link | Repository | https://github.com/U7ama/plant-taxonomy
-- video | youtube | czAnQxyhXVs | Intelligent Plant Taxonomy image-search demonstration
+- summary | A friend-organization application that brings contacts from multiple social platforms together and supports reminders for birthdays, chats, and meetings.
+- technologies | Node.js, Firebase, Push notifications
 
-### shop-the-job | Shop the Job | eCommerce
+### kong-api-gateway | Kong API Gateway Platform | Cloud / API Management
 
-- summary | A personal eCommerce web application for searching and browsing products by category.
-- technologies | React, Tailwind CSS
-- link | Website | https://shopthejob.vercel.app/
-- link | Repository | https://github.com/U7ama/shopthejob
+- summary | API-management infrastructure used to regulate traffic and secure serverless cloud functions.
+- detail | Deployed Kong Ingress on Google Kubernetes Engine with Anthos and published OpenAPI 3 specifications through the developer portal.
+- detail | Added OAuth-based access control and Terraform-managed infrastructure for scalable, documented API delivery.
+- technologies | Kong, GKE, Anthos, OpenAPI, OAuth, Terraform, Node.js
 
-### dress-in | Dress IN | eCommerce
+### levante-cuisine | Levante Cuisine | Hospitality / Web Application
 
-- summary | A MERN shopping application created for a retail store in Rawalpindi.
-- detail | Built the React and Tailwind frontend plus a Node.js and MongoDB product API.
-- technologies | React, Tailwind CSS, Node.js, MongoDB, Stripe
-- link | Website | https://dress-in.vercel.app/
-- link | Frontend Repository | https://github.com/U7ama/dress-in
-- link | API Repository | https://github.com/U7ama/dress-in-api
+- summary | A hospitality web project delivered during my Olumi Tech work. Its former public domain no longer represents this project.
+- technologies | React, Node.js, Cloud deployment
 
 ## Uses
 

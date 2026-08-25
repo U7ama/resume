@@ -26,6 +26,10 @@ if (/portfolio-schema\s*:/i.test(cvMarkdown)) {
   throw new Error('resume.md must remain independent of the portfolio content schema.');
 }
 
+if (cvMarkdown.includes('F*')) {
+  throw new Error('resume.md must not contain future-feature markers.');
+}
+
 if (!resumePage.includes('resume.md') || resumePage.includes('portfolio.md')) {
   throw new Error('The resume page must load resume.md only.');
 }
@@ -56,6 +60,10 @@ for (const url of cvUrls) {
 }
 
 const portfolio = parsePortfolioMarkdown(portfolioMarkdown);
+if (portfolioMarkdown.includes('F*') || cvMarkdown.includes('F*')) {
+  throw new Error('Future-feature markers (F*) are not allowed.');
+}
+
 console.log(
-  `Content validation passed: CV is independent with ${cvUrls.size} links; portfolio has ${portfolio.projects.length} projects.`,
+  `Content validation passed: CV is independent with ${cvUrls.size} links; portfolio has ${portfolio.projects.length} verified projects.`,
 );

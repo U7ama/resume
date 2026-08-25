@@ -5,22 +5,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Usama Aslam — Full Stack Engineer | AI &amp; Cloud</title>
-  <meta name="description" content="Résumé of Usama Aslam, a full-stack developer building AI, SaaS, cloud, web, and real-time IoT products.">
+  <title>Usama Aslam — Full-Stack Engineer | Applied AI &amp; Cloud</title>
+  <meta name="description" content="Résumé of Usama Aslam, a full-stack engineer delivering Applied AI, SaaS, cloud, and real-time AV/IoT products.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://u7ama.github.io/resume/">
 
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Usama Aslam Résumé">
-  <meta property="og:title" content="Usama Aslam — Full Stack Engineer | AI &amp; Cloud">
-  <meta property="og:description" content="Experience, skills, education, and selected projects from Usama Aslam.">
+  <meta property="og:title" content="Usama Aslam — Full-Stack Engineer | Applied AI &amp; Cloud">
+  <meta property="og:description" content="Full-stack, Applied AI, and Cloud experience, skills, and selected products from Usama Aslam.">
   <meta property="og:url" content="https://u7ama.github.io/resume/">
   <meta property="og:image" content="https://u7ama.github.io/resume/Usama%20DP.jpeg">
   <meta property="og:image:alt" content="Usama Aslam">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Usama Aslam — Full Stack Engineer | AI &amp; Cloud">
-  <meta name="twitter:description" content="Experience, skills, education, and selected projects from Usama Aslam.">
+  <meta name="twitter:title" content="Usama Aslam — Full-Stack Engineer | Applied AI &amp; Cloud">
+  <meta name="twitter:description" content="Full-stack, Applied AI, and Cloud experience, skills, and selected products from Usama Aslam.">
   <meta name="twitter:image" content="https://u7ama.github.io/resume/Usama%20DP.jpeg">
 
   <script type="application/ld+json">
@@ -28,13 +28,13 @@
       "@context": "https://schema.org",
       "@type": "ProfilePage",
       "url": "https://u7ama.github.io/resume/",
-      "name": "Usama Aslam — Full Stack Engineer | AI & Cloud",
+      "name": "Usama Aslam — Full-Stack Engineer | Applied AI & Cloud",
       "mainEntity": {
         "@type": "Person",
         "name": "Usama Aslam",
         "url": "https://usamaaslam.site/",
         "image": "https://u7ama.github.io/resume/Usama%20DP.jpeg",
-        "jobTitle": "Full-Stack Developer",
+        "jobTitle": "Full-Stack Engineer | Applied AI & Cloud",
         "sameAs": [
           "https://github.com/U7ama",
           "https://www.linkedin.com/in/usama-aslam-638584194/",
@@ -102,30 +102,47 @@
       box-sizing: border-box;
       display: flex;
       justify-content: flex-end;
+      align-items: center;
+      gap: 0.75rem;
       max-width: 62rem;
       margin: 1.5rem auto -1.5rem;
       padding: 0 1rem;
     }
 
-    .print-button {
+    .toolbar-button {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       border: 0;
       border-radius: 0.35rem;
       padding: 0.72rem 1rem;
+      font: 700 0.95rem/1 var(--body-font-family);
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-button {
       color: white;
       background: var(--highlight-color);
       box-shadow: 0 0.25rem 0.75rem hsl(222deg 70% 30% / 0.22);
-      font: 700 0.95rem/1 var(--body-font-family);
-      cursor: pointer;
     }
 
     .print-button:hover {
       background: #173b5c;
     }
 
-    .print-button svg {
+    .toggle-photo-button {
+      color: var(--highlight-color);
+      background: #eef3f8;
+      border: 1px solid #c9d8e7;
+    }
+
+    .toggle-photo-button:hover {
+      background: #e0ecf7;
+      border-color: var(--highlight-color);
+    }
+
+    .toolbar-button svg {
       width: 1.1rem;
       height: 1.1rem;
     }
@@ -153,7 +170,7 @@
 
     #header {
       display: grid;
-      grid-template-columns: 10.41rem 1fr;
+      grid-template-columns: 7.5rem 1fr;
       column-gap: 1.5rem;
       align-items: center;
     }
@@ -174,15 +191,15 @@
     #profilePhoto,
     #profilePhotoFile {
       display: block;
-      width: 10.41rem;
-      height: 10.41rem;
+      width: 7.5rem;
+      height: 7.5rem;
     }
 
     #profilePhotoFile {
       box-sizing: border-box;
-      border: 0.28rem solid var(--highlight-color);
-      border-radius: 1.15rem;
-      box-shadow: inset 0 0 0 0.2rem white;
+      border: 0.22rem solid var(--highlight-color);
+      border-radius: 0.85rem;
+      box-shadow: inset 0 0 0 0.15rem white;
       object-fit: cover;
       object-position: center;
     }
@@ -460,14 +477,22 @@
       }
 
       #header {
-        grid-template-columns: 9.66rem 1fr;
+        grid-template-columns: 6.8rem 1fr;
         column-gap: 1.2rem;
+      }
+
+      #header.without-profile-image {
+        grid-template-columns: 1fr;
+      }
+
+      #identity[hidden] {
+        display: none !important;
       }
 
       #profilePhoto,
       #profilePhotoFile {
-        width: 9.66rem;
-        height: 9.66rem;
+        width: 6.8rem;
+        height: 6.8rem;
       }
 
       #introName {
@@ -552,7 +577,14 @@
 
 <body>
   <div class="print-toolbar">
-    <button id="printButton" class="print-button" type="button">
+    <button id="togglePhotoButton" class="toolbar-button toggle-photo-button" type="button" aria-pressed="true" title="Toggle profile photo for web and print">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+        <circle cx="12" cy="13" r="4"></circle>
+      </svg>
+      <span id="togglePhotoText">Hide Photo</span>
+    </button>
+    <button id="printButton" class="toolbar-button print-button" type="button">
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6 9V2h12v7"></path>
         <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
@@ -581,10 +613,9 @@
       <div id="intro">
         <div id="introHeader">
           <span id="introName">Usama Aslam</span>
-          <span id="introRole">Full Stack Engineer | AI &amp; Cloud</span>
+          <span id="introRole">Full-Stack Engineer | Applied AI &amp; Cloud</span>
         </div>
-        <p>Full-stack engineer with 4+ years delivering production web, AI, API, cloud, and real-time systems across AV/IoT, travel, healthcare, hospitality, and e-commerce.</p>
-        <p>Owns end-to-end architecture, React/Next.js and Node.js/Python delivery, testing, deployment, documentation, and client handoff.</p>
+        <p>Full-stack engineer with 4+ years delivering production SaaS, Applied AI platforms, APIs, and real-time AV/IoT systems across travel, healthcare, hospitality, and e-commerce. Owns the complete engineering lifecycle from system architecture and development to reliable cloud deployment.</p>
       </div>
     </section>
 
@@ -641,14 +672,14 @@
         <div class="entry-heading">
           <div>
             <span class="entry-title">Full Stack Engineer</span>,
-            <span class="entry-org">Freelance / Upwork (Remote)</span>
+            <span class="entry-org">AlignAV (Remote)</span>
           </div>
-          <span class="entry-date">Jul 2024 - Present</span>
+          <span class="entry-date">Aug 2024 - Present</span>
         </div>
         <ul>
-          <li>Build AI SaaS platforms, dashboards, internal tools, Shopify/API products, and automations for Upwork and direct clients, with $10K+ in earnings and 2,500+ tracked hours.</li>
-          <li>Delivered AlignAV asset management and real-time AV/IoT monitoring across dashboards, edge services, and a C# monitoring agent using Next.js, Node.js/Python, Azure IoT Hub/Edge, Cosmos DB, Docker, WebSockets, and CI/CD.</li>
-          <li>Own delivery from product discovery through implementation, testing, integrations, deployment, documentation, and client handoff.</li>
+          <li>Delivered <a href="https://www.alignav.com/">AlignAV</a> asset management and real-time AV/IoT monitoring for 5,000+ connected devices across dashboards, edge services, and a C# edge/Windows monitoring service using Next.js, Node.js/Python, Azure IoT Hub/Edge, Cosmos DB, Docker, WebSockets, and CI/CD.</li>
+          <li>Implemented tenant-scoped, read-only AI assistance over permitted room/device data and knowledge articles for cited troubleshooting guidance, plus AI-assisted import mapping and warnings with human review before records are committed.</li>
+          <li>Built scalable cloud infrastructure with Azure DevOps and Docker, ensuring reliable device telemetry and seamless client onboarding.</li>
         </ul>
       </article>
       <article class="entry">
@@ -661,6 +692,7 @@
         </div>
         <ul>
           <li>Delivered full-stack features, APIs, integrations, and deployment support across seven healthcare, travel, e-commerce, and productivity products using React, Node.js, FastAPI, AWS/GCP, Firebase, SQL, Stripe, Shopify, and AI APIs.</li>
+          <li>Integrated multimodal Gemini vision for recipe discovery in <a href="https://apps.apple.com/ca/app/coolpotato/id6677017071">Cool Potato</a>, and OpenAI-assisted journaling in Diary Synergy.</li>
         </ul>
       </article>
       <article class="entry">
@@ -672,7 +704,7 @@
           <span class="entry-date">Aug 2022 - Oct 2023</span>
         </div>
         <ul>
-          <li>Developed Node.js serverless microservices behind Kong API Gateway, automated AWS/GCP infrastructure with Terraform, and deployed Kong Ingress on GKE/Anthos with OpenAPI 3 and OAuth.</li>
+          <li>Developed Node.js serverless microservices at <a href="https://www.xecutors.com/">Xecutors</a> behind Kong API Gateway, automated AWS/GCP infrastructure with Terraform, and deployed Kong Ingress on GKE/Anthos with OpenAPI 3 and OAuth.</li>
           <li>Built independently deployable Next.js/TypeScript microfrontends and integrated PostgreSQL/GraphQL, payments, messaging, travel, document, and PDF workflows through Agile delivery.</li>
         </ul>
       </article>
@@ -685,7 +717,7 @@
           <span class="entry-date">Mar 2022 - Aug 2022</span>
         </div>
         <ul>
-          <li>Built Roomph.pk hotel discovery and booking flows with React, Node.js, REST APIs, and MongoDB, reducing redundant rendering and API requests to improve the browsing experience.</li>
+          <li>Built <a href="https://roomph.pk/">Roomph.pk</a> hotel discovery and booking flows with React, Node.js, REST APIs, and MongoDB, reducing redundant rendering and API requests to improve the browsing experience.</li>
         </ul>
       </article>
     </section>
@@ -693,14 +725,14 @@
     <section class="resume-section">
       <h1>Technical Skills</h1>
       <div class="info-grid">
-        <span class="info-label">Frontend/Testing</span>
-        <span>React, Next.js, TypeScript, JavaScript, Tailwind CSS, Material UI, HTML/CSS, Jest, Playwright, integration/E2E testing, Three.js/WebGL, Stencil.js, and Webpack/Vite.</span>
-        <span class="info-label">Backend/APIs</span>
-        <span>Node.js, Python, FastAPI, C#, REST, GraphQL/Hasura, WebSockets, OAuth, OpenAPI, Kong API Gateway, Redis, serverless functions, and queues.</span>
-        <span class="info-label">AI/Cloud/DevOps</span>
-        <span>Generative AI, OpenAI, Claude, Gemini, Git, CI/CD, observability, AWS, GCP, Azure, Docker, Kubernetes, Terraform, Cloudflare, Azure DevOps, and Linux.</span>
-        <span class="info-label">Data/Integrations</span>
-        <span>PostgreSQL, MongoDB, MySQL, Firebase, Cosmos DB, Stripe/Braintree, Shopify, Twilio, SendGrid/Mailgun, Amadeus, and DocuSign.</span>
+        <span class="info-label">AI &amp; Automation</span>
+        <span>RAG (pgvector, Hybrid Search/RRF), LLM Integrations (OpenAI, Gemini, Claude), n8n Automations, AI Agents, MCP, Multimodal Vision, Structured Outputs (Zod), Streaming APIs (SSE), and Evaluations &amp; Observability.</span>
+        <span class="info-label">Frontend &amp; UI</span>
+        <span>React, Next.js, TypeScript, Tailwind CSS, Three.js/WebGL, and Playwright (E2E).</span>
+        <span class="info-label">Backend &amp; APIs</span>
+        <span>Node.js, Python (FastAPI), C#, REST APIs, GraphQL, WebSockets, and Redis (Queues).</span>
+        <span class="info-label">Cloud, Data &amp; Integrations</span>
+        <span>PostgreSQL, MongoDB, MySQL, Cosmos DB, Firebase, AWS, GCP, Azure/IoT, Docker, Kubernetes, Terraform, CI/CD (GitHub Actions, Azure DevOps), Stripe, and Shopify.</span>
       </div>
     </section>
 
@@ -715,24 +747,15 @@
           <span class="entry-date">2018 - 2022</span>
         </div>
       </article>
-      <article class="entry">
-        <div class="entry-heading">
-          <div>
-            <span class="entry-title">FSc Pre-Engineering</span><br>
-            <span class="entry-org">Punjab College, Gujranwala</span>
-          </div>
-          <span class="entry-date">2016 - 2018</span>
-        </div>
-      </article>
     </section>
 
     <section class="resume-section">
       <h1>Selected Projects</h1>
       <ul>
-        <li><a href="https://www.alignav.com/">AlignAV Monitoring</a> — centralized asset management and real-time AV/IoT monitoring.</li>
+        <li><a href="https://github.com/U7ama/deviceops-ai-copilot">DeviceOps AI Copilot</a> — Applied AI copilot with multi-tenant pgvector RAG, bounded agent loops, human approvals, signed n8n automations, and Expo companion app.</li>
         <li><a href="https://copilottravel.com/">Copilot Travel</a> — integrated flight search and booking for travel businesses.</li>
         <li><a href="https://sunridgemedical.com/">Sunridge Medical</a> — clinic operations and patient-management workflows.</li>
-        <li>Interactive portfolio — <a href="https://usamaaslam.site/">Main</a>, <a href="https://3d.usamaaslam.site/">3D</a>, and <a href="https://os.usamaaslam.site/">OS</a> experiences.</li>
+        <li>Interactive portfolio — <a href="https://3d.usamaaslam.site/">3D</a> and <a href="https://os.usamaaslam.site/">OS</a> web experiences.</li>
       </ul>
     </section>
   </div>
@@ -751,6 +774,57 @@
         document.documentElement.style.fontSize = "";
       }, 100);
     });
+
+    let profileImageVisible = true;
+    let configuredProfileImage = null;
+
+    function updateProfileImageVisibility(visible, imagePath) {
+      profileImageVisible = Boolean(visible);
+      if (imagePath !== undefined) {
+        configuredProfileImage = imagePath;
+      }
+
+      const header = document.getElementById("header");
+      const identity = document.getElementById("identity");
+      const toggleBtn = document.getElementById("togglePhotoButton");
+      const toggleText = document.getElementById("togglePhotoText");
+
+      if (header) {
+        header.classList.toggle("without-profile-image", !profileImageVisible);
+      }
+      if (identity) {
+        identity.hidden = !profileImageVisible;
+      }
+      if (toggleBtn) {
+        toggleBtn.setAttribute("aria-pressed", profileImageVisible ? "true" : "false");
+      }
+      if (toggleText) {
+        toggleText.textContent = profileImageVisible ? "Hide Photo" : "Show Photo";
+      }
+
+      if (profileImageVisible && profilePhotoFile) {
+        const requestedImage = getSafeImageHref(configuredProfileImage);
+        if (requestedImage) {
+          profilePhotoFile.src = requestedImage;
+          profilePhotoFile.hidden = false;
+          if (profilePhotoSvg) profilePhotoSvg.setAttribute("hidden", "");
+          profilePhotoFile.addEventListener("error", () => {
+            profilePhotoFile.hidden = true;
+            if (profilePhotoSvg) profilePhotoSvg.removeAttribute("hidden");
+          }, { once: true });
+        } else {
+          profilePhotoFile.hidden = true;
+          if (profilePhotoSvg) profilePhotoSvg.removeAttribute("hidden");
+        }
+      }
+    }
+
+    const togglePhotoButton = document.getElementById("togglePhotoButton");
+    if (togglePhotoButton) {
+      togglePhotoButton.addEventListener("click", function () {
+        updateProfileImageVisibility(!profileImageVisible);
+      });
+    }
 
     /* ── CV Markdown Loader ──
        Fetches the independently maintained resume.md published with this page.
@@ -1003,28 +1077,9 @@
       if (cv.name) document.getElementById("introName").textContent = cv.name;
       if (cv.role) document.getElementById("introRole").textContent = cv.role;
 
-      // Optional profile image
-      const header = document.getElementById("header");
-      const identity = document.getElementById("identity");
+      // Optional profile image (reads from resume.md displayOptions)
       const showProfileImage = cv.displayOptions?.showProfileImage !== false;
-      header.classList.toggle("without-profile-image", !showProfileImage);
-      identity.hidden = !showProfileImage;
-
-      if (showProfileImage && profilePhotoFile) {
-        const requestedImage = getSafeImageHref(cv.displayOptions?.profileImage);
-        if (requestedImage) {
-          profilePhotoFile.src = requestedImage;
-          profilePhotoFile.hidden = false;
-          profilePhotoSvg.setAttribute("hidden", "");
-          profilePhotoFile.addEventListener("error", () => {
-            profilePhotoFile.hidden = true;
-            profilePhotoSvg.removeAttribute("hidden");
-          }, { once: true });
-        } else {
-          profilePhotoFile.hidden = true;
-          profilePhotoSvg.removeAttribute("hidden");
-        }
-      }
+      updateProfileImageVisibility(showProfileImage, cv.displayOptions?.profileImage);
 
       // Summary
       const intro = document.getElementById("intro");
@@ -1085,13 +1140,13 @@
           const title = document.createElement("span");
           heading.className = "entry-heading";
           title.className = "entry-title";
-          title.textContent = entry.title;
+          appendMarkdownLinks(title, entry.title);
           headingText.appendChild(title);
 
           if (entry.org) {
             const org = document.createElement("span");
             org.className = "entry-org";
-            org.textContent = entry.org;
+            appendMarkdownLinks(org, entry.org);
             headingText.appendChild(document.createTextNode(", "));
             headingText.appendChild(org);
           }

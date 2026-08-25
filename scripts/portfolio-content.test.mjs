@@ -7,6 +7,7 @@ import {
 } from './portfolio-content.mjs';
 
 const validMarkdown = await readFile('portfolio.md', 'utf8');
+const resumeMarkdown = await readFile('resume.md', 'utf8');
 
 test('parses the published portfolio contract', () => {
   const portfolio = parsePortfolioMarkdown(validMarkdown);
@@ -15,9 +16,20 @@ test('parses the published portfolio contract', () => {
   assert.deepEqual(
     portfolio.projects
       .filter((project) => project.featuredOrder !== null)
-      .map((project) => project.featuredOrder),
-    [1, 2, 3],
+      .sort((a, b) => a.featuredOrder - b.featuredOrder)
+      .map((project) => project.id),
+    ['roomph', 'copilot-travel', 'xecutors-platforms'],
   );
+});
+
+test('ensures no future feature markers exist in portfolio or resume', () => {
+  const portfolio = parsePortfolioMarkdown(validMarkdown);
+  const futureDetails = portfolio.projects.flatMap((project) =>
+    project.details.filter((detail) => detail.includes('F*') || detail.includes('Future feature')),
+  );
+  assert.equal(futureDetails.length, 0);
+  assert.equal(validMarkdown.includes('F*'), false);
+  assert.equal(resumeMarkdown.includes('F*'), false);
 });
 
 test('rejects unsupported schema versions', () => {
