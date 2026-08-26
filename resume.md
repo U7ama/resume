@@ -57,4 +57,4 @@ Full-stack engineer with 4+ years delivering production SaaS, Applied AI platfor
 - [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) — Applied AI copilot with multi-tenant pgvector RAG, bounded agent loops, human approvals, signed n8n automations, and Expo companion app.
 - [Copilot Travel](https://copilottravel.com/) — integrated flight search and booking for travel businesses.
 - [Sunridge Medical](https://sunridgemedical.com/) — clinic operations and patient-management workflows.
-- Interactive portfolio — [3D](https://3d.usamaaslam.site/) and [OS](https://os.usamaaslam.site/) web experiences.
+- [Interactive portfolio](https://portfolio.usamaaslam.site/) — [Main](https://usamaaslam.site/) [3D](https://3d.usamaaslam.site/) and [OS](https://os.usamaaslam.site/) web experiences.
