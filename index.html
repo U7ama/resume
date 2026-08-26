@@ -131,15 +131,23 @@
       background: #173b5c;
     }
 
-    .toggle-photo-button {
+    .toggle-photo-button,
+    .toggle-editor-button {
       color: var(--highlight-color);
       background: #eef3f8;
       border: 1px solid #c9d8e7;
     }
 
-    .toggle-photo-button:hover {
+    .toggle-photo-button:hover,
+    .toggle-editor-button:hover {
       background: #e0ecf7;
       border-color: var(--highlight-color);
+    }
+
+    .toggle-editor-button[aria-pressed="true"] {
+      background: #1f4e79;
+      color: white;
+      border-color: #1f4e79;
     }
 
     .toolbar-button svg {
@@ -147,11 +155,197 @@
       height: 1.1rem;
     }
 
+    .app-layout {
+      box-sizing: border-box;
+      max-width: 62rem;
+      margin: 3rem auto;
+      transition: max-width 0.25s ease;
+    }
+
+    .app-layout.editor-open {
+      max-width: 96vw;
+      display: grid;
+      grid-template-columns: minmax(420px, 1fr) 210mm;
+      gap: 2rem;
+      align-items: start;
+      padding: 0 1.5rem;
+    }
+
+    .app-layout.editor-open #cv {
+      margin: 0;
+      width: 100%;
+      max-width: 210mm;
+    }
+
+    .editor-pane {
+      display: flex;
+      flex-direction: column;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.35);
+      position: sticky;
+      top: 1.5rem;
+      height: calc(100vh - 3rem);
+      max-height: 297mm;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .editor-pane[hidden] {
+      display: none !important;
+    }
+
+    .editor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1rem;
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      gap: 0.5rem;
+    }
+
+    .editor-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .editor-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .editor-icon {
+      width: 1.05rem;
+      height: 1.05rem;
+      color: #38bdf8;
+    }
+
+    .editor-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: 0.02em;
+    }
+
+    .editor-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .editor-stats {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .editor-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .editor-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #475569;
+      border-radius: 0.35rem;
+      padding: 0.4rem 0.65rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+
+    .editor-btn svg {
+      width: 0.85rem;
+      height: 0.85rem;
+    }
+
+    .editor-btn:hover {
+      background: #475569;
+      border-color: #64748b;
+    }
+
+    .editor-btn-reset:hover {
+      background: #991b1b;
+      border-color: #ef4444;
+      color: white;
+    }
+
+    .editor-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      background: #090d16;
+    }
+
+    #markdownEditor {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      resize: none;
+      padding: 1rem 1.15rem;
+      background: transparent;
+      color: #e2e8f0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      tab-size: 2;
+      white-space: pre;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    #markdownEditor::selection {
+      background: #0284c7;
+      color: white;
+    }
+
+    .editor-footer {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: #1e293b;
+      border-top: 1px solid #334155;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    .editor-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .pulse-dot {
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+
     #cv {
       box-sizing: border-box;
       max-width: 62rem;
       padding: 2.35rem;
-      margin: 3rem auto;
+      margin: 0 auto;
       background-color: white;
       box-shadow:
         0 0 4px hsl(0deg 0% 0% / 0.1),
@@ -358,6 +552,20 @@
       font-weight: 700;
     }
 
+    @media screen and (max-width: 82rem) {
+      .app-layout.editor-open {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+
+      .editor-pane {
+        position: static;
+        height: 520px;
+        max-height: 520px;
+        margin-bottom: 2rem;
+      }
+    }
+
     @media screen and (max-width: 65rem) {
       body {
         background-color: white;
@@ -442,6 +650,15 @@
         -webkit-print-color-adjust: exact;
       }
 
+      .app-layout {
+        display: block !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 210mm !important;
+      }
+
+      .editor-pane,
       .print-toolbar {
         display: none !important;
       }
@@ -613,6 +830,13 @@
       </svg>
       <span id="togglePhotoText">Hide Photo</span>
     </button>
+    <button id="toggleEditorButton" class="toolbar-button toggle-editor-button" type="button" aria-pressed="false" title="Toggle Markdown Editor">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h9"></path>
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+      </svg>
+      <span id="toggleEditorText">Edit Markdown</span>
+    </button>
     <button id="printButton" class="toolbar-button print-button" type="button">
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6 9V2h12v7"></path>
@@ -623,8 +847,48 @@
     </button>
   </div>
 
-  <!-- Static fallback content. Primary content and display options are loaded from resume.md. -->
-  <div id="cv">
+  <main id="appLayout" class="app-layout">
+    <aside id="editorPane" class="editor-pane" hidden aria-label="Markdown Editor">
+      <div class="editor-header">
+        <div class="editor-title-group">
+          <div class="editor-title-row">
+            <svg class="editor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span class="editor-title">resume.md Editor</span>
+            <span class="editor-badge">Live Sync</span>
+          </div>
+          <span id="editorStats" class="editor-stats">0 words · 0 chars</span>
+        </div>
+        <div class="editor-actions">
+          <button id="copyMdBtn" class="editor-btn" type="button" title="Copy Markdown to clipboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span id="copyBtnText">Copy</span>
+          </button>
+          <button id="downloadMdBtn" class="editor-btn" type="button" title="Download resume.md file">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Export .md</span>
+          </button>
+          <button id="resetMdBtn" class="editor-btn editor-btn-reset" type="button" title="Reset editor to default resume.md">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+            <span>Reset</span>
+          </button>
+        </div>
+      </div>
+      <div class="editor-body">
+        <textarea id="markdownEditor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Type Markdown here..."></textarea>
+      </div>
+      <div class="editor-footer">
+        <span class="editor-status"><span class="pulse-dot"></span> Real-time changes apply directly to HTML &amp; PDF</span>
+      </div>
+    </aside>
+
+    <!-- Static fallback content. Primary content and display options are loaded from resume.md. -->
+    <div id="cv">
     <section id="header">
       <div id="identity">
         <svg id="profilePhoto" role="img" aria-label="Photo of Usama Aslam" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
@@ -784,10 +1048,11 @@
         <li><a href="https://github.com/U7ama/deviceops-ai-copilot">DeviceOps AI Copilot</a> — Applied AI copilot with multi-tenant pgvector RAG, bounded agent loops, human approvals, signed n8n automations, and Expo companion app.</li>
         <li><a href="https://copilottravel.com/">Copilot Travel</a> — integrated flight search and booking for travel businesses.</li>
         <li><a href="https://sunridgemedical.com/">Sunridge Medical</a> — clinic operations and patient-management workflows.</li>
-        <li>Interactive portfolio — <a href="https://3d.usamaaslam.site/">3D</a> and <a href="https://os.usamaaslam.site/">OS</a> web experiences.</li>
+        <li><a href="https://portfolio.usamaaslam.site/">Interactive portfolio</a> — <a href="https://usamaaslam.site/">Main</a>, <a href="https://3d.usamaaslam.site/">3D</a> and <a href="https://os.usamaaslam.site/">OS</a> web experiences.</li>
       </ul>
     </section>
   </div>
+  </main>
 
   <script>
     /* Keep print typography deterministic; layout is verified against one A4 page. */
@@ -1295,10 +1560,138 @@
       }
     }
 
+    /* ── Live Markdown Editor Controller ── */
+    const appLayout = document.getElementById("appLayout");
+    const editorPane = document.getElementById("editorPane");
+    const toggleEditorBtn = document.getElementById("toggleEditorButton");
+    const toggleEditorText = document.getElementById("toggleEditorText");
+    const markdownEditor = document.getElementById("markdownEditor");
+    const editorStats = document.getElementById("editorStats");
+    const copyMdBtn = document.getElementById("copyMdBtn");
+    const copyBtnText = document.getElementById("copyBtnText");
+    const downloadMdBtn = document.getElementById("downloadMdBtn");
+    const resetMdBtn = document.getElementById("resetMdBtn");
+
+    let originalMarkdown = "";
+    const STORAGE_KEY = "resume_md_draft";
+
+    function updateEditorStats(text) {
+      if (!editorStats) return;
+      const chars = text.length;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      editorStats.textContent = `${words} words · ${chars} chars`;
+    }
+
+    function applyMarkdownLive(text, saveDraft = true) {
+      try {
+        const cv = parseCV(text);
+        renderCV(cv);
+        updateEditorStats(text);
+        if (saveDraft) {
+          try {
+            localStorage.setItem(STORAGE_KEY, text);
+          } catch (_) {}
+        }
+      } catch (err) {
+        console.warn("Markdown parse/render error:", err);
+      }
+    }
+
+    function setEditorOpen(open) {
+      const isOpen = Boolean(open);
+      if (appLayout) appLayout.classList.toggle("editor-open", isOpen);
+      if (editorPane) editorPane.hidden = !isOpen;
+      if (toggleEditorBtn) toggleEditorBtn.setAttribute("aria-pressed", isOpen ? "true" : "false");
+      if (toggleEditorText) toggleEditorText.textContent = isOpen ? "Hide Editor" : "Edit Markdown";
+    }
+
+    if (toggleEditorBtn) {
+      toggleEditorBtn.addEventListener("click", () => {
+        const isCurrentlyOpen = appLayout && appLayout.classList.contains("editor-open");
+        setEditorOpen(!isCurrentlyOpen);
+      });
+    }
+
+    if (markdownEditor) {
+      markdownEditor.addEventListener("input", function () {
+        applyMarkdownLive(this.value, true);
+      });
+
+      // Tab key indentation support (inserts 2 spaces)
+      markdownEditor.addEventListener("keydown", function (e) {
+        if (e.key === "Tab") {
+          e.preventDefault();
+          const start = this.selectionStart;
+          const end = this.selectionEnd;
+          this.value = this.value.substring(0, start) + "  " + this.value.substring(end);
+          this.selectionStart = this.selectionEnd = start + 2;
+          applyMarkdownLive(this.value, true);
+        }
+      });
+    }
+
+    if (copyMdBtn && markdownEditor) {
+      copyMdBtn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(markdownEditor.value);
+          if (copyBtnText) copyBtnText.textContent = "Copied!";
+          setTimeout(() => { if (copyBtnText) copyBtnText.textContent = "Copy"; }, 2000);
+        } catch (_) {
+          markdownEditor.select();
+          document.execCommand("copy");
+          if (copyBtnText) copyBtnText.textContent = "Copied!";
+          setTimeout(() => { if (copyBtnText) copyBtnText.textContent = "Copy"; }, 2000);
+        }
+      });
+    }
+
+    if (downloadMdBtn && markdownEditor) {
+      downloadMdBtn.addEventListener("click", () => {
+        const blob = new Blob([markdownEditor.value], { type: "text/markdown;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "resume.md";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    if (resetMdBtn && markdownEditor) {
+      resetMdBtn.addEventListener("click", () => {
+        if (confirm("Reset to default resume.md content? Any custom edits will be replaced with the original file.")) {
+          try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+          markdownEditor.value = originalMarkdown;
+          applyMarkdownLive(originalMarkdown, false);
+        }
+      });
+    }
+
     // Fetch and render CV from markdown
     fetch(CV_RAW_URL + "?t=" + Date.now())
       .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(md => renderCV(parseCV(md)))
+      .then(md => {
+        originalMarkdown = md;
+        let initialText = md;
+        try {
+          const savedDraft = localStorage.getItem(STORAGE_KEY);
+          if (savedDraft && savedDraft.trim()) {
+            initialText = savedDraft;
+          }
+        } catch (_) {}
+        if (markdownEditor) {
+          markdownEditor.value = initialText;
+        }
+        applyMarkdownLive(initialText, false);
+
+        // Check if ?edit=1 or #edit is requested
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("edit") === "1" || urlParams.get("edit") === "true" || window.location.hash === "#edit") {
+          setEditorOpen(true);
+        }
+      })
       .catch(e => console.warn("resume.md fetch failed, using static content:", e));
   </script>
 </body>
