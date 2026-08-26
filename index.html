@@ -131,6 +131,10 @@
       background: #173b5c;
     }
 
+    .print-text-short {
+      display: none;
+    }
+
     .toggle-photo-button,
     .toggle-editor-button {
       color: var(--highlight-color);
@@ -590,16 +594,88 @@
     }
 
     @media screen and (max-width: 45rem) {
+      .print-toolbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 0.5rem;
+        margin: 0.75rem auto 0;
+        box-sizing: border-box;
+      }
+
+      .toolbar-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.28rem;
+        padding: 0.38rem 0.55rem;
+        font-size: 0.74rem;
+        border-radius: 0.3rem;
+        white-space: nowrap;
+      }
+
+      .toolbar-button svg {
+        width: 0.8rem;
+        height: 0.8rem;
+        flex-shrink: 0;
+      }
+
+      .print-text-full {
+        display: none;
+      }
+
+      .print-text-short {
+        display: inline;
+      }
+
+      .contact-link,
+      .contact-item {
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      .app-layout {
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+
       #cv {
         padding: 1rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
       }
 
       #header {
-        grid-template-columns: 1fr;
+        grid-template-columns: 5.2rem minmax(0, 1fr);
+        column-gap: 0.85rem;
+        align-items: start;
       }
 
       #identity {
-        margin: 0 auto 1rem;
+        margin: 0;
+      }
+
+      #profilePhoto,
+      #profilePhotoFile {
+        width: 5.2rem;
+        height: 5.2rem;
+      }
+
+      #introName {
+        font-size: 1.45rem;
+      }
+
+      #introRole {
+        letter-spacing: 0.05em;
+        line-height: 1.25;
       }
 
       #intro {
@@ -617,9 +693,14 @@
         justify-self: start;
       }
 
-      .info-grid,
-      .entry-heading {
+      .info-grid {
         grid-template-columns: 1fr;
+      }
+
+      .entry-heading {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
       }
     }
 
@@ -685,8 +766,8 @@
 
       #header {
         display: grid !important;
-        grid-template-columns: 8.0rem 1fr !important;
-        column-gap: 1.2rem !important;
+        grid-template-columns: 30.5mm 1fr !important;
+        column-gap: 4.5mm !important;
         align-items: center !important;
       }
 
@@ -705,9 +786,9 @@
 
       #profilePhoto,
       #profilePhotoFile {
-        width: 8.0rem !important;
-        height: 8.0rem !important;
-        border-radius: 0.75rem !important;
+        width: 30.5mm !important;
+        height: 30.5mm !important;
+        border-radius: 2.8mm !important;
       }
 
       #profilePhoto[hidden],
@@ -843,7 +924,8 @@
         <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
         <path d="M6 14h12v8H6z"></path>
       </svg>
-      <span>Download / Print PDF</span>
+      <span class="print-text-full">Download / Print PDF</span>
+      <span class="print-text-short">Print PDF</span>
     </button>
   </div>
 
@@ -1055,17 +1137,23 @@
   </main>
 
   <script>
-    /* Keep print typography deterministic; layout is verified against one A4 page. */
+    /* Keep print typography deterministic across all devices (Desktop & Mobile); layout is verified against one A4 page. */
     function autofitPrint() {
       document.documentElement.style.fontSize = "10.75pt";
     }
+
+    function resetPrintStyle() {
+      document.documentElement.style.fontSize = "";
+    }
+
+    window.addEventListener("beforeprint", autofitPrint);
+    window.addEventListener("afterprint", resetPrintStyle);
 
     document.getElementById("printButton").addEventListener("click", function () {
       autofitPrint();
       // Allow browser to process layout updates and paint a frame before print dialog opens
       setTimeout(() => {
         window.print();
-        document.documentElement.style.fontSize = "";
       }, 100);
     });
 
