@@ -1,0 +1,45 @@
+.print-toolbar { flex-wrap: wrap; gap: .5rem; }
+.resume-type-label { font-size: .78rem; font-weight: 700; color: #38516a; }
+#resumeType { max-width: 100%; border: 1px solid #bdcad6; border-radius: 7px; background: white; padding: .65rem; font: inherit; font-size: .82rem; color: #183b56; }
+#openStudio { background: #135e61; color: white; }
+.editor-pane { height: auto; max-height: none; position: static; overflow: visible; }
+.editor-body { min-height: 28rem; flex: none; }
+#markdownEditor { height: 28rem; white-space: pre-wrap; overflow-wrap: break-word; }
+#studio { flex-shrink: 0; }
+#studio { padding: 1.25rem; background: #f4f8f8; border-bottom: 1px solid #d6e3e5; color: #243b4c; font: .88rem/1.5 system-ui, sans-serif; }
+.studio-heading, .studio-row { display: flex; align-items: center; gap: .65rem; justify-content: space-between; }
+.studio-heading h2 { font-size: 1.4rem; margin: .25rem 0; letter-spacing: -.04em; }
+.studio-eyebrow { font-size: .62rem; letter-spacing: .14em; font-weight: 800; color: #39777a; }
+#studioBadge { border: 1px solid #bfd6d3; border-radius: 20px; padding: .25rem .5rem; font-size: .65rem; white-space: nowrap; }
+.studio-intro { margin: .6rem 0 1.1rem; color: #5b6d78; }
+#studio label { display: block; font-weight: 650; margin: .7rem 0 .35rem; }
+#studio label span { font-weight: 400; color: #6a7983; }
+#studio input, #studio textarea { width: 100%; min-width: 0; box-sizing: border-box; padding: .7rem; border: 1px solid #bdcdd1; border-radius: 7px; font: inherit; background: white; color: #243b4c; }
+#studio textarea { resize: vertical; }
+#studio button { border: 1px solid #b4c7cd; background: white; color: #234252; border-radius: 6px; padding: .55rem .75rem; cursor: pointer; font: inherit; font-size: .8rem; font-weight: 650; }
+#studio button:disabled { cursor: wait; opacity: .55; }
+#studio button.studio-primary { background: #135e61; color: white; border-color: #135e61; width: 100%; margin-top: .6rem; }
+#studio button.quiet { padding: .3rem .5rem; background: transparent; font-size: .75rem; flex-shrink: 0; }
+#studio :focus-visible, #resumeType:focus-visible { outline: 3px solid #46a8ad; outline-offset: 3px; }
+.studio-hint { font-size: .73rem; line-height: 1.5; color: #657580; margin: .5rem 0 .8rem; }
+.studio-account { font-size: .75rem; margin-bottom: .5rem; color: #135e61; }
+#studio h3 { font-size: .88rem; margin: .7rem 0; }
+#studio hr { border: 0; border-top: 1px solid #d4e0e2; margin: 1.2rem 0; }
+#studio [hidden], .resume-section[hidden] { display: none !important; }
+#versionHistory { padding-left: 1.1rem; font-size: .74rem; }
+#versionHistory li { margin: .7rem 0; }
+#versionHistory li button { margin-left: .4rem; }
+#studioStatus { padding: .65rem; background: #e7efef; border-radius: 6px; font-size: .76rem; margin: 1rem 0 0; }
+#proposalReview { margin-top: 1rem; border: 1px solid #b9d0ce; padding: .8rem; border-radius: 8px; }
+#proposalReview pre { max-height: 20rem; overflow: auto; white-space: pre-wrap; word-break: break-word; background: white; padding: .6rem; font-size: .73rem; }
+.generated-section h2 { font-size: .92rem; }
+@media (max-width: 600px) { .resume-type-label { display: none; } #resumeType { flex: 1; } #studio { padding: 1rem; } }
+@media print {
+  #studio, .print-toolbar, .editor-pane { display: none !important; }
+  html, body { height: auto !important; }
+  #cv { height: auto !important; min-height: 0; padding: 0 12.7mm !important; display: block !important; }
+  .resume-section { margin-top: .6rem; break-inside: auto; }
+  .entry { break-inside: avoid; }
+  h1, h2, .entry-heading { break-after: avoid; }
+  @page { size: A4; margin: 12.7mm 0; }
+}

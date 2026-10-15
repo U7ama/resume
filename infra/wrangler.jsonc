@@ -1,0 +1,10 @@
+{
+  "name": "resume-studio-proxy",
+  "main": "proxy.mjs",
+  "account_id": "b5892dffd8ddcb81168db7c305c767ad",
+  "compatibility_date": "2026-10-15",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{"pattern": "resume.usamaaslam.site", "custom_domain": true}],
+  "observability": {"enabled": false}
+}

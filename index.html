@@ -3,37 +3,38 @@
 
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Usama Aslam — Full-Stack Engineer | Applied AI &amp; Cloud</title>
   <meta name="description" content="Résumé of Usama Aslam, a full-stack engineer delivering Applied AI, SaaS, cloud, and real-time AV/IoT products.">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="canonical" href="https://u7ama.github.io/resume/">
+  <link rel="canonical" href="https://resume.usamaaslam.site/">
 
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Usama Aslam Résumé">
   <meta property="og:title" content="Usama Aslam — Full-Stack Engineer | Applied AI &amp; Cloud">
   <meta property="og:description" content="Full-stack, Applied AI, and Cloud experience, skills, and selected products from Usama Aslam.">
-  <meta property="og:url" content="https://u7ama.github.io/resume/">
-  <meta property="og:image" content="https://u7ama.github.io/resume/Usama%20DP.jpeg">
+  <meta property="og:url" content="https://resume.usamaaslam.site/">
+  <meta property="og:image" content="https://resume.usamaaslam.site/Usama%20DP.jpeg">
   <meta property="og:image:alt" content="Usama Aslam">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Usama Aslam — Full-Stack Engineer | Applied AI &amp; Cloud">
   <meta name="twitter:description" content="Full-stack, Applied AI, and Cloud experience, skills, and selected products from Usama Aslam.">
-  <meta name="twitter:image" content="https://u7ama.github.io/resume/Usama%20DP.jpeg">
+  <meta name="twitter:image" content="https://resume.usamaaslam.site/Usama%20DP.jpeg">
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfilePage",
-      "url": "https://u7ama.github.io/resume/",
+      "url": "https://resume.usamaaslam.site/",
       "name": "Usama Aslam — Full-Stack Engineer | Applied AI & Cloud",
       "mainEntity": {
         "@type": "Person",
         "name": "Usama Aslam",
         "url": "https://usamaaslam.site/",
-        "image": "https://u7ama.github.io/resume/Usama%20DP.jpeg",
+        "image": "https://resume.usamaaslam.site/Usama%20DP.jpeg",
         "jobTitle": "Full-Stack Engineer | Applied AI & Cloud",
         "sameAs": [
           "https://github.com/U7ama",
@@ -901,10 +902,18 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="studio.css">
 </head>
 
 <body>
   <div class="print-toolbar">
+    <label class="resume-type-label" for="resumeType">CV type</label>
+    <select id="resumeType" aria-label="Resume type">
+      <option value="software">Software engineering</option>
+      <option value="academic">Academic CV</option>
+      <option value="general">General resume</option>
+    </select>
+    <button id="openStudio" class="toolbar-button" type="button">AI Studio</button>
     <button id="togglePhotoButton" class="toolbar-button toggle-photo-button" type="button" aria-pressed="true" title="Toggle profile photo for web and print">
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
@@ -1341,6 +1350,8 @@
         skills: [],
         education: [],
         projects: [],
+        extra: [],
+        order: [],
         displayOptions: {
           showProfileImage: true,
           profileImage: ""
@@ -1369,14 +1380,23 @@
         // H2 = section header
         if (trimmed.startsWith("## ")) {
           const sectionName = trimmed.slice(3).trim().toLowerCase();
+          cv.order.push(sectionName);
           if (sectionName.includes("contact")) section = "contact";
           else if (sectionName.includes("display option")) section = "display-options";
           else if (sectionName.includes("experience")) section = "experience";
           else if (sectionName.includes("skill")) section = "skills";
           else if (sectionName.includes("education")) section = "education";
           else if (sectionName.includes("project")) section = "projects";
-          else section = "";
+          else {
+            section = "extra";
+            cv.extra.push({ title: trimmed.slice(3).trim(), lines: [] });
+          }
           currentEntry = null;
+          continue;
+        }
+
+        if (section === "extra") {
+          if (trimmed && !trimmed.startsWith("<!--")) cv.extra.at(-1).lines.push(trimmed);
           continue;
         }
 
@@ -1458,6 +1478,7 @@
     }
 
     function renderCV(cv) {
+      document.querySelectorAll(".generated-section").forEach(section => section.remove());
       // Name & role
       if (cv.name) document.getElementById("introName").textContent = cv.name;
       if (cv.role) document.getElementById("introRole").textContent = cv.role;
@@ -1510,6 +1531,36 @@
       sections.forEach(s => {
         const h1 = s.querySelector("h1");
         if (h1) sectionMap[h1.textContent.trim().toLowerCase()] = s;
+      });
+      for (const [key, items] of Object.entries({experience: cv.experience, "technical skills": cv.skills, education: cv.education, "selected projects": cv.projects})) {
+        if (sectionMap[key]) sectionMap[key].hidden = !items.length;
+      }
+      for (const extra of cv.extra) {
+        const section = document.createElement("section");
+        section.className = "resume-section generated-section";
+        const heading = document.createElement("h1");
+        heading.textContent = extra.title;
+        section.appendChild(heading);
+        let list = null;
+        for (const line of extra.lines) {
+          if (line.startsWith("- ")) {
+            if (!list) { list = document.createElement("ul"); section.appendChild(list); }
+            const item = document.createElement("li");
+            appendMarkdownLinks(item, line.slice(2));
+            list.appendChild(item);
+          } else {
+            list = null;
+            const paragraph = document.createElement(line.startsWith("### ") ? "h2" : "p");
+            appendMarkdownLinks(paragraph, line.replace(/^### /, ""));
+            section.appendChild(paragraph);
+          }
+        }
+        document.getElementById("cv").appendChild(section);
+        sectionMap[extra.title.toLowerCase()] = section;
+      }
+      cv.order.forEach(key => {
+        const normalized = key.includes("project") ? "selected projects" : key.includes("skill") ? "technical skills" : key.includes("experience") ? "experience" : key.includes("education") ? "education" : key;
+        if (sectionMap[normalized]) document.getElementById("cv").appendChild(sectionMap[normalized]);
       });
 
       // Experience
@@ -1664,7 +1715,7 @@
     const resetMdBtn = document.getElementById("resetMdBtn");
 
     let originalMarkdown = "";
-    const STORAGE_KEY = "resume_md_draft";
+    let STORAGE_KEY = "resume_md_draft";
 
     function updateEditorStats(text) {
       if (!editorStats) return;
@@ -1742,7 +1793,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "resume.md";
+        a.download = `Usama_Aslam_${document.getElementById("resumeType").value}_CV.md`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -1760,31 +1811,37 @@
       });
     }
 
-    // Fetch and render CV from markdown
-    fetch(CV_RAW_URL + "?t=" + Date.now())
-      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(md => {
-        originalMarkdown = md;
-        let initialText = md;
-        try {
-          const savedDraft = localStorage.getItem(STORAGE_KEY);
-          if (savedDraft && savedDraft.trim()) {
-            initialText = savedDraft;
-          }
-        } catch (_) {}
-        if (markdownEditor) {
-          markdownEditor.value = initialText;
-        }
-        applyMarkdownLive(initialText, false);
+    // Load the public baseline; private cloud versions are loaded after sign-in.
+    let loadSequence = 0;
+    async function loadResumeType(type = "software") {
+      const sequence = ++loadSequence;
+      const source = type === "software" ? CV_RAW_URL : `${type}.md`;
+      const response = await fetch(source);
+      if (!response.ok) throw new Error("Unable to load CV template.");
+      const md = await response.text();
+      if (sequence !== loadSequence) return;
+      STORAGE_KEY = type === "software" ? "resume_md_draft" : `resume_md_draft_${type}`;
+      originalMarkdown = md;
+      let initialText = md;
+      try { initialText = localStorage.getItem(STORAGE_KEY) || md; } catch (_) {}
+      markdownEditor.value = initialText;
+      applyMarkdownLive(initialText, false);
+      document.title = `Usama Aslam — ${type === "academic" ? "Academic CV" : type === "general" ? "General Resume" : "Software Engineering Resume"}`;
+      window.dispatchEvent(new CustomEvent("resume-loaded", {detail: {type}}));
+    }
+    window.resumeStudio = {
+      load: loadResumeType,
+      getMarkdown: () => markdownEditor.value,
+      setMarkdown: text => { markdownEditor.value = text; applyMarkdownLive(text); },
+      openEditor: () => setEditorOpen(true),
+    };
+    loadResumeType().then(() => {
+      const params = new URLSearchParams(location.search);
+      if (params.get("edit") === "1" || location.hash === "#edit") setEditorOpen(true);
+    }).catch(() => console.warn("CV template unavailable; displaying static fallback."));
 
-        // Check if ?edit=1 or #edit is requested
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get("edit") === "1" || urlParams.get("edit") === "true" || window.location.hash === "#edit") {
-          setEditorOpen(true);
-        }
-      })
-      .catch(e => console.warn("resume.md fetch failed, using static content:", e));
   </script>
+  <script src="studio.js" defer></script>
 </body>
 
 </html>

@@ -6,3 +6,10 @@ output/
 # Hosting CLI state
 .vercel/
 .wrangler/
+
+# Private runtime configuration and deployment packages
+.env*
+!.env.example
+.private/
+__pycache__/
+*.pyc

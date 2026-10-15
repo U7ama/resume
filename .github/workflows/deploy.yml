@@ -27,12 +27,16 @@ jobs:
         run: |
           node --test scripts/portfolio-content.test.mjs
           node scripts/validate-content.mjs
+          node --check studio.js
+          node --test infra/proxy.test.mjs
+          python3 -m unittest discover -s backend -v
+          python3 scripts/package-public.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'output/pages'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
