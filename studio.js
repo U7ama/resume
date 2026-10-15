@@ -99,7 +99,7 @@
   }
   $('openStudio').addEventListener('click', () => { bridge.openEditor(); });
   $('resumeType').addEventListener('change', () => run(async () => {
-    type = $('resumeType').value; epoch++; revision = null; proposal = null;
+    type = $('resumeType').value; document.body.dataset.cvType = type; epoch++; revision = null; proposal = null;
     $('proposalReview').hidden = true; $('versionNote').value = '';
     await bridge.load(type);
     if (signedIn) await loadCloud();
