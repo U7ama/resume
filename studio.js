@@ -97,7 +97,7 @@
     await history();
     status(data.id ? 'Cloud history loaded. Edit freely, then save a new version.' : 'Ready. Your first save will start private cloud history.');
   }
-  $('openStudio').addEventListener('click', () => { bridge.openEditor(); panel.scrollIntoView({behavior: 'smooth', block: 'start'}); });
+  $('openStudio').addEventListener('click', () => { bridge.openEditor(); });
   $('resumeType').addEventListener('change', () => run(async () => {
     type = $('resumeType').value; epoch++; revision = null; proposal = null;
     $('proposalReview').hidden = true; $('versionNote').value = '';

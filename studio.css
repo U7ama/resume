@@ -1,6 +1,7 @@
 .print-toolbar { flex-wrap: wrap; gap: .5rem; }
-.resume-type-label { font-size: .78rem; font-weight: 700; color: #38516a; }
-#resumeType { max-width: 100%; border: 1px solid #bdcad6; border-radius: 7px; background: white; padding: .65rem; font: inherit; font-size: .82rem; color: #183b56; }
+.resume-type-control { display: flex; align-items: center; gap: .75rem; min-width: 0; border: 1px solid #bdcad6; border-radius: 10px; background: #fff; padding: 0 .85rem; }
+.resume-type-label { flex-shrink: 0; font-size: .7rem; font-weight: 700; color: #62788a; text-transform: uppercase; letter-spacing: .07em; }
+#resumeType { appearance: none; -webkit-appearance: none; min-width: 0; max-width: 100%; border: 0; border-radius: 8px; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23135e61' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right center; padding: .8rem 1.6rem .8rem 0; font: inherit; font-size: 16px; font-weight: 600; color: #183b56; cursor: pointer; }
 #openStudio { background: #135e61; color: white; }
 .editor-pane { height: auto; max-height: none; position: static; overflow: visible; }
 .editor-body { min-height: 28rem; flex: none; }
@@ -35,6 +36,10 @@
 .generated-section h2 { font-size: .92rem; }
 @media (max-width: 600px) { .resume-type-label { display: none; } #resumeType { flex: 1; } #studio { padding: 1rem; } }
 @media screen {
+  .print-toolbar { margin: 1.25rem auto 0; gap: .65rem; }
+  .app-layout { margin: 1.5rem auto 2rem; }
+  .editor-pane { border-color: #c4d4dd; border-radius: 12px; }
+  #studio { border-radius: 11px 11px 0 0; }
   .app-layout.editor-open > * { min-width: 0; }
   .editor-header, .editor-actions, .editor-title-row { flex-wrap: wrap; }
   #studio { overflow-wrap: anywhere; }
@@ -49,10 +54,20 @@
   .contact-link, .contact-item { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
 }
 @media screen and (max-width: 45rem) {
-  .app-layout.editor-open { max-width: 100%; padding: 0 .5rem; }
+  .print-toolbar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 1rem auto 0; padding: 0 1rem; gap: .65rem; }
+  .resume-type-control { grid-column: 1 / -1; width: 100%; padding: 0 .85rem; }
+  .resume-type-label { display: block; }
+  #resumeType { flex: 1; width: 100%; font-size: 16px; }
+  .print-toolbar .toolbar-button { min-height: 44px; justify-content: center; padding: .7rem .65rem; font-size: .82rem; border-radius: 8px; }
+  .app-layout, .app-layout.editor-open { margin: 1.25rem auto 2rem; }
+  .app-layout.editor-open { max-width: 100%; padding: 0 1rem; gap: 1.25rem; }
   .editor-pane { width: 100%; }
-  .editor-header { padding: .75rem; }
-  #studio input, #studio textarea { font-size: 1rem; }
+  .editor-header { padding: 1rem; gap: .85rem; }
+  #studio { padding: 1.25rem; }
+  .studio-heading { align-items: flex-start; flex-wrap: wrap; }
+  #studio input, #studio textarea, #markdownEditor { font-size: 16px; }
+  #studio button { min-height: 42px; }
+  #proposalReview .studio-row { flex-wrap: wrap; }
 }
 @media print {
   #studio, .print-toolbar, .editor-pane { display: none !important; }
