@@ -7,13 +7,16 @@ Computer Science graduate with 4+ years of professional experience delivering Sa
 ## Display Options
 
 - show-profile-image | false
+- profile-image | Usama DP headshot.jpeg
 
 ## Contact
 
 - email | mailto:u7amaaslam@gmail.com | u7amaaslam@gmail.com
 - website | https://usamaaslam.site/ | usamaaslam.site
 - linkedin | https://www.linkedin.com/in/usama-aslam-638584194/ | linkedin.com/in/usama-aslam-638584194
+- github | https://github.com/U7ama | github.com/U7ama
 - phone | tel:+923016441046 | +92 301 6441046 · Lahore, Pakistan
+- upwork | https://www.upwork.com/freelancers/usamaa241?mp_source=share | upwork.com/freelancers/usamaa241
 
 ## Education
 
@@ -31,8 +34,8 @@ CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-med
 
 ### Full Stack Engineer | AlignAV (Remote) | Aug 2024 - Sep 2026
 
-- Built asset-management dashboards and real-time AV/IoT monitoring services supporting 5,000+ connected devices.
-- Implemented a tenant-scoped AI assistant with cited troubleshooting guidance and AI-assisted import mapping with human review.
+- Built asset-management dashboards and real-time AV/IoT monitoring services supporting 5,000+ connected devices, including Azure IoT edge services and a C# Windows monitoring client.
+- Implemented a tenant-scoped AI assistant with cited troubleshooting guidance, and AI-assisted import mapping with validation warnings and human review before records are saved.
 - Managed deployment pipelines using Azure DevOps and Docker.
 
 ### Full Stack Developer | Olumi Tech (Remote) | Nov 2023 - Feb 2025
@@ -47,11 +50,11 @@ CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-med
 
 ### MERN Stack Developer | Stash Technologies (Remote) | Mar 2022 - Aug 2022
 
-- Built hotel discovery and booking flows for Roomph.pk using React, Node.js, and MongoDB.
+- Built hotel discovery and booking flows for Roomph.pk using React, Node.js, and MongoDB; reduced redundant rendering and API requests.
 
 ## Selected Projects
 
-- [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - Multi-tenant AI copilot combining retrieval, approval workflows, automation, a mobile companion, and a 40-case evaluation suite.
+- [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - Multi-tenant AI copilot combining pgvector retrieval, approval-gated workflows, signed n8n automation, an Expo mobile companion, and a 40-case evaluation suite.
 - [Sunridge Medical](https://sunridgemedical.com/) - Clinic dashboard supporting patient, appointment, treatment, and laboratory-result workflows.
 - [Copilot Travel](https://copilottravel.com/) - Reusable web component supporting flight search and booking.
 

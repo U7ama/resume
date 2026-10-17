@@ -22,7 +22,7 @@ Python 3.10+ and Node.js are enough for local development; no Python packages ar
 
 Print layouts use the bundled Resume Print font (Carlito derivative) to keep text metrics consistent across desktop and mobile. Font sources and the SIL Open Font License are in `assets/fonts/`. After changing those files, regenerate the embedded CSS with `python3 scripts/embed-print-fonts.py`. The Print PDF button waits for both font weights before opening the print preview.
 
-All CV types share the same print spacing. A compact spacing fallback is selected only when the content exceeds the A4 printable height; it preserves the font size and page margins. Measurement temporarily applies the print rules at the A4 content width because Chromium fires `beforeprint` before its print media query changes. The temporary rules and width are restored immediately, and compact spacing is cleared after printing.
+All CV types share the same print spacing and A4 margins. The public templates contain enough verified detail for a complete first page. Printing selects the largest body size from 10.75–11.75pt that fits; it never stretches section gaps to fill space. Dense drafts can use compact spacing, while longer documents keep their content and may continue onto another page. Measurement temporarily applies print rules at the A4 content width, disables screen rules and normalizes heading borders because Chromium fires `beforeprint` before its print media query changes. Temporary styles are restored immediately, and fitting styles are cleared after printing. Saved cloud versions and browser drafts are preserved when templates are updated.
 
 ```sh
 python3 scripts/prepare-runtime.py --qwen-env /path/to/private/DeviceOps.env --origin http://localhost:4081

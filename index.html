@@ -927,7 +927,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="studio.css?v=balanced-print-3">
+  <link rel="stylesheet" href="studio.css?v=full-page-print-1">
 </head>
 
 <body data-cv-type="software">
@@ -1189,19 +1189,36 @@
       const originalWidth = rootStyle.getPropertyValue?.("width") || "";
       const originalPriority = rootStyle.getPropertyPriority?.("width") || "";
       const printRules = [];
+      const screenRules = [];
       for (const sheet of document.styleSheets || []) {
         try {
           for (const rule of sheet.cssRules) {
             if (rule.media?.mediaText === "print") printRules.push(rule);
+            else if (/\bscreen\b/.test(rule.media?.mediaText || "")) screenRules.push({rule, media: rule.media.mediaText});
           }
         } catch (_) {}
       }
       try {
         printRules.forEach(rule => { rule.media.mediaText = "all"; });
+        screenRules.forEach(({rule}) => { rule.media.mediaText = "not all"; });
         rootStyle.setProperty?.("width", `${210 - 2 * 12.7}mm`, "important");
-        if (cv.getBoundingClientRect().height > printableHeight) cv.classList.add("print-compact");
+        // Screen device-pixel rounding changes thin borders. Measure without
+        // them, then add the exact 1px print rule for each section heading.
+        cv.classList.add("print-measuring");
+        const headingBorders = cv.querySelectorAll?.("h1").length || 0;
+        const measureHeight = () => cv.getBoundingClientRect().height + headingBorders;
+        // Choose the largest readable size that fits, instead of stretching
+        // section gaps. Keep a small rounding allowance at the page bottom.
+        const availableHeight = printableHeight - 2;
+        if (measureHeight() > availableHeight) cv.classList.add("print-compact");
+        for (let hundredths = 1175; hundredths >= 1075; hundredths -= 5) {
+          rootStyle.fontSize = `${hundredths / 100}pt`;
+          if (measureHeight() <= availableHeight) break;
+        }
       } finally {
+        cv.classList.remove("print-measuring");
         printRules.forEach(rule => { rule.media.mediaText = "print"; });
+        screenRules.forEach(({rule, media}) => { rule.media.mediaText = media; });
         if (originalWidth) rootStyle.setProperty?.("width", originalWidth, originalPriority);
         else rootStyle.removeProperty?.("width");
       }

@@ -149,7 +149,7 @@
         ],
         "Code": {
           "S3Bucket": "resume-studio-129631621612-us-east-1",
-          "S3Key": "deploy/api-9d516b1a09325d841b6d.zip"
+          "S3Key": "deploy/api-28c1a5ea0cacb8743807.zip"
         },
         "Environment": {
           "Variables": {
@@ -208,8 +208,8 @@
         "FunctionName": {
           "Ref": "Api"
         },
-        "CodeSha256": "nVFrGgkyXYQbbYpm9kj4iO/0ihFCAo0daEebVa6dpk8=",
-        "Description": "deploy/api-9d516b1a09325d841b6d.zip"
+        "CodeSha256": "KMGl6gysuHQ4B6+8xbB6Aq+QFReVi7tvSXpzJjFOEao=",
+        "Description": "deploy/api-28c1a5ea0cacb8743807.zip"
       },
       "Metadata": {
         "com.aws.cloudformation.Context": {

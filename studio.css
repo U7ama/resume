@@ -184,6 +184,8 @@ DEALINGS IN THE FONT SOFTWARE.
   #cv > * { flex-shrink: 0; }
   #cv ul { padding-left: 1.2rem; }
   .resume-section { margin-top: .65rem; break-inside: auto; }
+  #cv h1 { border-bottom-width: 1px; }
+  #cv.print-measuring h1 { border-bottom-width: 0 !important; }
   #cv.print-compact { line-height: 1.2; }
   #cv.print-compact .resume-section { margin-top: .45rem; }
   #cv.print-compact #contact { margin-top: .5rem !important; margin-bottom: .3rem !important; row-gap: .2rem; }
