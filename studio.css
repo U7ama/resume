@@ -176,6 +176,7 @@ DEALINGS IN THE FONT SOFTWARE.
 @media print {
   :root { --body-font-family: "Resume Print", sans-serif; --heading-font-family: "Resume Print", sans-serif; }
   html, body, #cv { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  #cv { font-variant-ligatures: none; }
   #studio, .print-toolbar, .editor-pane { display: none !important; }
   html, body { width: auto !important; height: auto !important; }
   .app-layout { width: auto !important; }

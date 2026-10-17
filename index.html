@@ -525,6 +525,11 @@
       margin-bottom: 0.16rem;
     }
 
+    .entry-heading > div {
+      min-width: 0;
+      flex: 1;
+    }
+
     .entry-title {
       color: var(--highlight-color);
       font-weight: 700;
@@ -539,6 +544,8 @@
       color: var(--muted-color);
       font-weight: 700;
       white-space: nowrap;
+      flex-shrink: 0;
+      text-align: right;
     }
 
     .entry-note {
@@ -703,6 +710,10 @@
         flex-direction: column;
         gap: 0.15rem;
       }
+
+      .entry-date {
+        align-self: flex-end;
+      }
     }
 
     @page {
@@ -814,26 +825,28 @@
       }
 
       #contact {
-        display: grid !important;
-        grid-template-columns: repeat(3, auto) !important;
-        justify-content: space-between !important;
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.2rem 0.85rem;
         margin: 0 0 0.25rem !important;
         font-size: 0.9rem !important;
+        line-height: 1.5;
       }
 
-      #contact > :nth-child(3n + 1) {
-        grid-column: auto !important;
-        justify-self: start !important;
+      #contact > * {
+        display: inline-flex !important;
+        white-space: nowrap;
+        overflow-wrap: normal;
+        word-break: normal;
       }
 
-      #contact > :nth-child(3n + 2) {
-        grid-column: auto !important;
-        justify-self: center !important;
+      #contact svg {
+        display: none;
       }
 
-      #contact > :nth-child(3n) {
-        grid-column: auto !important;
-        justify-self: end !important;
+      #contact > * > span {
+        margin-left: 0;
       }
 
       .section-large,
@@ -845,7 +858,12 @@
         display: flex !important;
         justify-content: space-between !important;
         align-items: baseline !important;
+        flex-direction: row !important;
         margin-bottom: 0.16rem !important;
+      }
+
+      .entry-date {
+        align-self: baseline;
       }
 
       .resume-section {
@@ -874,19 +892,6 @@
         margin-bottom: 0.18rem;
       }
 
-      #education .entry-heading {
-        display: block !important;
-      }
-
-      #education .entry-heading > div,
-      #education .entry-date {
-        display: inline !important;
-      }
-
-      #education .entry-date::before {
-        content: " | ";
-      }
-
       .entry-note {
         margin-top: 0.08rem;
       }
@@ -902,7 +907,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="studio.css?v=print-fonts-1">
+  <link rel="stylesheet" href="studio.css?v=consistent-print-2">
 </head>
 
 <body data-cv-type="software">
@@ -1227,10 +1232,28 @@
       }
     }
 
+    function setProfileImagePreference(visible) {
+      if (!markdownEditor || !markdownEditor.value.trim()) {
+        updateProfileImageVisibility(visible);
+        return;
+      }
+      const option = `- show-profile-image | ${Boolean(visible)}`;
+      let markdown = markdownEditor.value;
+      if (/^[\t ]*-[\t ]+show-profile-image[\t ]*\|[^\r\n]*$/im.test(markdown)) {
+        markdown = markdown.replace(/^[\t ]*-[\t ]+show-profile-image[\t ]*\|[^\r\n]*$/im, option);
+      } else if (/^##[\t ]+Display Options[\t ]*$/im.test(markdown)) {
+        markdown = markdown.replace(/^(##[\t ]+Display Options[\t ]*)$/im, `$1\n${option}`);
+      } else {
+        markdown = `${markdown.trimEnd()}\n\n## Display Options\n\n${option}\n`;
+      }
+      markdownEditor.value = markdown;
+      applyMarkdownLive(markdown, true);
+    }
+
     const togglePhotoButton = document.getElementById("togglePhotoButton");
     if (togglePhotoButton) {
       togglePhotoButton.addEventListener("click", function () {
-        updateProfileImageVisibility(!profileImageVisible);
+        setProfileImagePreference(!profileImageVisible);
       });
     }
 

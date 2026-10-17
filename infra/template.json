@@ -146,7 +146,7 @@
         ],
         "Code": {
           "S3Bucket": "resume-studio-129631621612-us-east-1",
-          "S3Key": "deploy/api-3c8e2a0363d64fd8cb0e.zip"
+          "S3Key": "deploy/api-26eb03e4b9c2cac406ae.zip"
         },
         "Environment": {
           "Variables": {
