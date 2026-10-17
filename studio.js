@@ -91,11 +91,8 @@
     const data = await api(`current?type=${type}`);
     if (stamp !== epoch) return;
     revision = data.id;
-    if (data.id && bridge.getMarkdown() !== data.markdown) {
-      if (confirm('Load your latest cloud version? Choose Cancel to keep the draft currently in this browser.')) bridge.setMarkdown(data.markdown);
-    }
     await history();
-    status(data.id ? 'Cloud history loaded. Edit freely, then save a new version.' : 'Ready. Your first save will start private cloud history.');
+    status(data.id ? 'Cloud history is ready. Use Load beside a saved version to open it in the editor.' : 'Ready. Your first save will start private cloud history.');
   }
   $('openStudio').addEventListener('click', () => { bridge.openEditor(); });
   $('resumeType').addEventListener('change', () => run(async () => {
