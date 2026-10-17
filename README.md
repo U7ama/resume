@@ -20,6 +20,8 @@ This is configured for low personal usage within the recurring [Lambda](https://
 
 Python 3.10+ and Node.js are enough for local development; no Python packages are required for SQLite tests. Lambda supplies boto3 in its Python runtime.
 
+Print layouts use the bundled Resume Print font (Carlito derivative) to keep text metrics consistent across desktop and mobile. Font sources and the SIL Open Font License are in `assets/fonts/`. After changing those files, regenerate the embedded CSS with `python3 scripts/embed-print-fonts.py`. The Print PDF button waits for both font weights before opening the print preview.
+
 ```sh
 python3 scripts/prepare-runtime.py --qwen-env /path/to/private/DeviceOps.env --origin http://localhost:4081
 python3 scripts/studio-dev.py --port 4081

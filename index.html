@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Usama Aslam — Full-Stack Engineer | Applied AI &amp; Cloud</title>
@@ -902,7 +902,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="studio.css">
+  <link rel="stylesheet" href="studio.css?v=print-fonts-1">
 </head>
 
 <body data-cv-type="software">
@@ -1163,12 +1163,24 @@
     window.addEventListener("beforeprint", autofitPrint);
     window.addEventListener("afterprint", resetPrintStyle);
 
-    document.getElementById("printButton").addEventListener("click", function () {
-      autofitPrint();
-      // Allow browser to process layout updates and paint a frame before print dialog opens
-      setTimeout(() => {
+    // Preload the embedded font even while screen CSS is active. Mobile print previews
+    // otherwise paginate using a fallback font before the print font has finished loading.
+    const printFontsReady = document.fonts
+      ? Promise.all([document.fonts.load('400 12px "Resume Print"'), document.fonts.load('700 12px "Resume Print"')])
+      : Promise.resolve();
+    printFontsReady.catch(() => {});
+
+    document.getElementById("printButton").addEventListener("click", async function () {
+      this.disabled = true;
+      try {
+        await printFontsReady;
+        if (document.fonts) await document.fonts.ready;
+        autofitPrint();
+        await new Promise(requestAnimationFrame);
         window.print();
-      }, 100);
+      } finally {
+        this.disabled = false;
+      }
     });
 
     let profileImageVisible = true;
