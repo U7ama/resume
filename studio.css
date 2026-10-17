@@ -181,10 +181,12 @@ DEALINGS IN THE FONT SOFTWARE.
   html, body { width: auto !important; height: auto !important; }
   .app-layout { width: auto !important; }
   #cv { width: 100% !important; height: auto !important; min-height: 0; padding: 0 !important; display: block !important; }
-  body[data-cv-type="software"] #cv { min-height: 271.6mm; display: flex !important; }
   #cv > * { flex-shrink: 0; }
   #cv ul { padding-left: 1.2rem; }
-  .resume-section { margin-top: .25rem; break-inside: auto; }
+  .resume-section { margin-top: .65rem; break-inside: auto; }
+  #cv.print-compact { line-height: 1.2; }
+  #cv.print-compact .resume-section { margin-top: .45rem; }
+  #cv.print-compact #contact { margin-top: .5rem !important; margin-bottom: .3rem !important; row-gap: .2rem; }
   .entry { break-inside: avoid; }
   h1, h2, .entry-heading { break-after: avoid; }
   @page { size: A4; margin: 12.7mm; }

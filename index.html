@@ -778,7 +778,7 @@
 
       #header {
         display: grid !important;
-        grid-template-columns: 31.8mm 1fr !important;
+        grid-template-columns: 28mm minmax(0, 1fr) !important;
         column-gap: 4.5mm !important;
         align-items: start !important;
       }
@@ -790,7 +790,9 @@
       #identity {
         display: grid !important;
         margin: 0 !important;
-        align-self: start !important;
+        align-self: stretch !important;
+        position: relative;
+        min-height: 0;
       }
 
       #identity[hidden] {
@@ -799,8 +801,13 @@
 
       #profilePhoto,
       #profilePhotoFile {
-        width: 31.8mm !important;
-        height: 31.8mm !important;
+        position: absolute;
+        inset: 0;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 36mm;
+        object-fit: cover;
+        object-position: center 35%;
         border-radius: 2.8mm !important;
       }
 
@@ -824,14 +831,22 @@
         padding-left: 0 !important;
       }
 
+      #introHeader {
+        margin-bottom: 0.45rem;
+      }
+
+      #intro p {
+        margin: 0.35rem 0 0;
+      }
+
       #contact {
         display: flex !important;
         flex-wrap: wrap;
         justify-content: flex-start;
-        gap: 0.2rem 0.85rem;
-        margin: 0 0 0.25rem !important;
-        font-size: 0.9rem !important;
-        line-height: 1.5;
+        gap: 0.3rem 1.1rem;
+        margin: 0.65rem 0 0.45rem !important;
+        font-size: 0.95rem !important;
+        line-height: 1.35;
       }
 
       #contact > * {
@@ -842,11 +857,16 @@
       }
 
       #contact svg {
-        display: none;
+        display: block;
+        width: 0.9rem;
+        height: 0.9rem;
+        flex-shrink: 0;
+        color: var(--highlight-color);
       }
 
       #contact > * > span {
-        margin-left: 0;
+        margin-left: 0.35rem;
+        text-decoration: none;
       }
 
       .section-large,
@@ -907,7 +927,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="studio.css?v=consistent-print-2">
+  <link rel="stylesheet" href="studio.css?v=balanced-print-3">
 </head>
 
 <body data-cv-type="software">
@@ -1159,10 +1179,37 @@
     /* Keep print typography deterministic across all devices (Desktop & Mobile); layout is verified against one A4 page. */
     function autofitPrint() {
       document.documentElement.style.fontSize = "10.75pt";
+      const cv = document.getElementById("cv");
+      if (!cv?.classList) return;
+      cv.classList.remove("print-compact");
+      // Chrome fires beforeprint before matchMedia('print') changes. Temporarily
+      // apply the actual print rules at the A4 content width to measure reliably.
+      const printableHeight = (297 - 2 * 12.7) * 96 / 25.4;
+      const rootStyle = document.documentElement.style;
+      const originalWidth = rootStyle.getPropertyValue?.("width") || "";
+      const originalPriority = rootStyle.getPropertyPriority?.("width") || "";
+      const printRules = [];
+      for (const sheet of document.styleSheets || []) {
+        try {
+          for (const rule of sheet.cssRules) {
+            if (rule.media?.mediaText === "print") printRules.push(rule);
+          }
+        } catch (_) {}
+      }
+      try {
+        printRules.forEach(rule => { rule.media.mediaText = "all"; });
+        rootStyle.setProperty?.("width", `${210 - 2 * 12.7}mm`, "important");
+        if (cv.getBoundingClientRect().height > printableHeight) cv.classList.add("print-compact");
+      } finally {
+        printRules.forEach(rule => { rule.media.mediaText = "print"; });
+        if (originalWidth) rootStyle.setProperty?.("width", originalWidth, originalPriority);
+        else rootStyle.removeProperty?.("width");
+      }
     }
 
     function resetPrintStyle() {
       document.documentElement.style.fontSize = "";
+      document.getElementById("cv")?.classList?.remove("print-compact");
     }
 
     window.addEventListener("beforeprint", autofitPrint);

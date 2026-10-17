@@ -37,3 +37,43 @@ test('print waits for both bundled font weights before opening the dialog', asyn
   events.afterprint();
   assert.equal(style.fontSize, '');
 });
+
+test('compact spacing measures print height and restores temporary media and width', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const source = html.slice(html.indexOf('    function autofitPrint()'), html.indexOf('    // Preload the embedded font'));
+  const classes = new Set();
+  let height = 900;
+  const media = {mediaText: 'print'};
+  const style = {width: '', setProperty(name, value) { this[name] = value; },
+    getPropertyValue(name) { return this[name]; }, getPropertyPriority() { return ''; },
+    removeProperty(name) { delete this[name]; }};
+  const context = {
+    document: {documentElement: {style}, styleSheets: [{cssRules: [{media}]}], getElementById: () => ({
+      classList: {add: value => classes.add(value), remove: value => classes.delete(value)},
+      getBoundingClientRect: () => {
+        assert.equal(media.mediaText, 'all');
+        assert.equal(style.width, '184.6mm');
+        return {height};
+      },
+    })},
+    window: {addEventListener() {}},
+  };
+  vm.createContext(context);
+  vm.runInContext(source, context);
+  context.autofitPrint();
+  assert.equal(classes.has('print-compact'), false);
+  height = 1100;
+  context.autofitPrint();
+  assert.equal(classes.has('print-compact'), true);
+  assert.equal(style.fontSize, '10.75pt');
+  assert.equal(media.mediaText, 'print');
+  assert.equal(style.width, undefined);
+  height = 900;
+  context.autofitPrint();
+  assert.equal(classes.has('print-compact'), false);
+  height = 1100;
+  context.autofitPrint();
+  context.resetPrintStyle();
+  assert.equal(classes.size, 0);
+  assert.equal(style.fontSize, '');
+});
