@@ -12,9 +12,9 @@ Browser drafts are stored separately by CV type. Locking the workspace revokes i
 
 The application and its assets run in an ARM64 Python Lambda. DynamoDB Standard stores CV revisions, session hashes and quota counters, with 5 provisioned read units and 10 write units. SQLite is used only for local development/tests. Qwen uses DeviceOps' configured model and international OpenAI-compatible endpoint, with thinking disabled. Its API key stays in a private, AES256-encrypted S3 configuration object. The browser never receives it.
 
-A small Cloudflare Worker provides HTTPS for the custom domain, caches only allowlisted public assets and forwards private API requests without caching. The AWS origin requires a separate secret header, and private operations also require the owner's session. The proxy does not contain the Qwen key. Logs omit CV text, access codes and tokens. No EC2 instance, RDS database, NAT gateway, API Gateway or paid Cloudflare subscription was created. CloudFront is unavailable in this AWS account pending AWS Support verification.
+CloudFront provides HTTPS for the custom domain, caches only allowlisted public assets and forwards private API requests without caching. Its origin access control signs requests to an IAM-only Lambda alias URL; private operations also require the owner's session. Cloudflare manages DNS only. The previous Worker is retained without a domain binding for recovery. Minimal CloudFront access logs expire after seven days and exclude IP addresses, query strings, cookies and request bodies. No EC2 instance, RDS database, NAT gateway, API Gateway, paid WAF or Shield Advanced plan was created.
 
-This is configured for low personal usage within the recurring [Lambda](https://aws.amazon.com/lambda/pricing/) and [DynamoDB](https://aws.amazon.com/dynamodb/pricing/) allowances and Cloudflare's [Workers Free allowance](https://developers.cloudflare.com/workers/platform/pricing/). Allowances are shared with other applications in the account. S3 configuration/deployment storage and requests can incur small usage charges if not covered by the account's current benefits; [S3 pricing](https://aws.amazon.com/s3/pricing/) is separate. Qwen billing/free quota is also separate. This setup is **not a guaranteed $0 bill or an account spending cap**. No paid plan was selected.
+This is configured for low personal usage within the recurring [Lambda](https://aws.amazon.com/lambda/pricing/), [DynamoDB](https://aws.amazon.com/dynamodb/pricing/) and pay-as-you-go [CloudFront](https://aws.amazon.com/cloudfront/pricing/) allowances. Allowances are shared with other applications in the account. S3 configuration, deployment packages and short-retention logs can incur small storage/request charges if not covered by the account's current benefits; [S3 pricing](https://aws.amazon.com/s3/pricing/) is separate. Qwen billing/free quota is also separate. This setup is **not a guaranteed $0 bill or an account spending cap**. No fixed-price plan was selected.
 
 ## Local development
 
@@ -33,11 +33,10 @@ Only selected Qwen settings are copied. DeviceOps configuration is not modified.
 
 ```sh
 python3 -m unittest discover -s backend -v
-node --test scripts/portfolio-content.test.mjs
+node --test scripts/portfolio-content.test.mjs scripts/photo-preference.test.mjs scripts/print-readiness.test.mjs scripts/studio-history.test.mjs infra/cloudfront-viewer.test.mjs infra/proxy.test.mjs
 node scripts/validate-content.mjs
 node --check studio.js
 node --check infra/proxy.mjs
-node --test infra/proxy.test.mjs
 git diff --check
 ```
 

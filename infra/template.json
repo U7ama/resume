@@ -1,13 +1,16 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Resume Studio AWS origin: CV app, private version history and bounded Qwen generation. Cloudflare provides HTTPS routing.",
+  "Description": "Resume Studio AWS origin: CV app, private version history and bounded Qwen generation. Supports staged CloudFront delivery.",
   "Metadata": {
     "com.aws.cloudformation.Context": {
       "Purpose": "Personal CV workspace",
       "Database": "DynamoDB Standard provisioned 5 RCU/10 WCU; immutable revisions; retained on deletion",
       "Secrets": "Private encrypted S3 runtime configuration, readable only by the Lambda role",
-      "Origin": "Lambda Function URL with an application-verified shared secret from the Cloudflare proxy",
+      "Origin": "IAM-only Lambda Function URLs; CloudFront OAC scoped to this distribution",
       "Cost": "Shared monthly Lambda/DynamoDB allowances; tiny S3 deployment/configuration storage and request costs may remain. No always-on compute."
+    },
+    "AWSToolsMetrics": {
+      "AWSAgentToolkit": "aws-cloudformation@3"
     }
   },
   "Resources": {
@@ -146,14 +149,15 @@
         ],
         "Code": {
           "S3Bucket": "resume-studio-129631621612-us-east-1",
-          "S3Key": "deploy/api-c095d5ac3a7092721fcd.zip"
+          "S3Key": "deploy/api-9d516b1a09325d841b6d.zip"
         },
         "Environment": {
           "Variables": {
             "TABLE_NAME": {
               "Ref": "History"
             },
-            "CONFIG_BUCKET": "resume-studio-129631621612-us-east-1"
+            "CONFIG_BUCKET": "resume-studio-129631621612-us-east-1",
+            "ALLOW_IAM_ORIGIN": "1"
           }
         },
         "Tags": [
@@ -170,7 +174,7 @@
         "TargetFunctionArn": {
           "Ref": "Api"
         },
-        "AuthType": "NONE"
+        "AuthType": "AWS_IAM"
       }
     },
     "AllowUrl": {
@@ -180,8 +184,8 @@
           "Ref": "Api"
         },
         "Action": "lambda:InvokeFunctionUrl",
-        "Principal": "*",
-        "FunctionUrlAuthType": "NONE"
+        "Principal": "cloudfront.amazonaws.com",
+        "SourceArn": "arn:aws:cloudfront::129631621612:distribution/E1TER5XI4EAJIX"
       }
     },
     "AllowInvoke": {
@@ -191,14 +195,77 @@
           "Ref": "Api"
         },
         "Action": "lambda:InvokeFunction",
-        "Principal": "*",
-        "InvokedViaFunctionUrl": true
+        "Principal": "cloudfront.amazonaws.com",
+        "InvokedViaFunctionUrl": true,
+        "SourceArn": "arn:aws:cloudfront::129631621612:distribution/E1TER5XI4EAJIX"
+      }
+    },
+    "CloudFrontVersion": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "Api"
+        },
+        "CodeSha256": "nVFrGgkyXYQbbYpm9kj4iO/0ihFCAo0daEebVa6dpk8=",
+        "Description": "deploy/api-9d516b1a09325d841b6d.zip"
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Immutable tested release for the CloudFront origin.",
+          "must": [
+            "Publish after Api code updates; retain earlier versions."
+          ]
+        }
+      }
+    },
+    "CloudFrontAlias": {
+      "Type": "AWS::Lambda::Alias",
+      "Properties": {
+        "Name": "cloudfront",
+        "FunctionName": {
+          "Ref": "Api"
+        },
+        "FunctionVersion": {
+          "Fn::GetAtt": [
+            "CloudFrontVersion",
+            "Version"
+          ]
+        }
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Stable CloudFront endpoint across code releases.",
+          "must": [
+            "Keep alias name and endpoint stable."
+          ]
+        }
+      }
+    },
+    "CloudFrontUrl": {
+      "Type": "AWS::Lambda::Url",
+      "DependsOn": "CloudFrontAlias",
+      "Properties": {
+        "TargetFunctionArn": {
+          "Ref": "Api"
+        },
+        "Qualifier": "cloudfront",
+        "AuthType": "AWS_IAM"
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Parallel IAM-only origin permits testing before DNS migration.",
+          "must": [
+            "Require SigV4; CloudFront stack scopes invoke permissions."
+          ]
+        }
       }
     }
   },
   "Outputs": {
     "OriginUrl": {
-      "Description": "AWS origin (requires the private proxy header)",
+      "Description": "Legacy IAM-only URL; live CloudFront uses CloudFrontOriginUrl",
       "Value": {
         "Fn::GetAtt": [
           "ApiUrl",
@@ -216,6 +283,19 @@
       "Description": "Application function name",
       "Value": {
         "Ref": "Api"
+      }
+    },
+    "CloudFrontOriginUrl": {
+      "Value": {
+        "Fn::GetAtt": [
+          "CloudFrontUrl",
+          "FunctionUrl"
+        ]
+      }
+    },
+    "CloudFrontAliasArn": {
+      "Value": {
+        "Fn::Sub": "${Api.Arn}:cloudfront"
       }
     }
   }

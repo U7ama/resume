@@ -237,7 +237,10 @@ def handler(event, context):
     from urllib.parse import parse_qsl, unquote
     headers = {key.lower(): value for key, value in event.get('headers', {}).items()}
     expected = config().get('origin_secret', '')
-    if not expected or not hmac.compare_digest(headers.get('x-resume-origin', ''), expected):
+    iam = event.get('requestContext', {}).get('authorizer', {}).get('iam', {})
+    signed_origin = os.environ.get('ALLOW_IAM_ORIGIN') == '1' and bool(iam.get('userArn'))
+    legacy_proxy = bool(expected) and hmac.compare_digest(headers.get('x-resume-origin', ''), expected)
+    if not signed_origin and not legacy_proxy:
         return response(403, {'error': 'Use the resume website to access this service.'})
     request = event.get('requestContext', {}).get('http', {})
     path = event.get('rawPath', '/')
@@ -263,7 +266,7 @@ def handler(event, context):
         body = body.encode()
     if event.get('cookies'):
         headers['cookie'] = '; '.join(event['cookies'])
-    # Set by our authenticated Cloudflare proxy, never trusted from public callers.
+    # Overwritten by our authenticated edge (CloudFront Function or migration proxy).
     ip = headers.get('x-resume-client-ip', request.get('sourceIp', 'unknown'))
     return handle(request.get('method', 'GET'), event.get('rawPath', '/'), headers, body, ip,
                   dict(parse_qsl(event.get('rawQueryString', ''))))

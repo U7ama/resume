@@ -138,6 +138,17 @@ class ApiTests(unittest.TestCase):
         event['rawPath'] = '/api/session'
         self.assertEqual(json.loads(app.handler(event, None)['body']), {'authenticated': False})
 
+    def test_iam_origin_requires_enabled_mode_and_verified_authorizer(self):
+        event = {'rawPath': '/api/session', 'headers': {'x-resume-client-ip': '203.0.113.8'},
+                 'requestContext': {'http': {'method': 'GET'}, 'authorizer': {'iam': {'userArn': 'arn:aws:iam::123456789012:role/edge'}}}}
+        with patch.dict('os.environ', {'ALLOW_IAM_ORIGIN': '0'}):
+            self.assertEqual(app.handler(event, None)['statusCode'], 403)
+        with patch.dict('os.environ', {'ALLOW_IAM_ORIGIN': '1'}):
+            self.assertEqual(json.loads(app.handler(event, None)['body']), {'authenticated': False})
+            event['requestContext'].pop('authorizer')
+            event['headers']['authorization'] = 'AWS4-fake-header'
+            self.assertEqual(app.handler(event, None)['statusCode'], 403)
+
 
 if __name__ == '__main__':
     unittest.main()

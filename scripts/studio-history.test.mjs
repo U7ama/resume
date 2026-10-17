@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import vm from 'node:vm';
+import {webcrypto, createHash} from 'node:crypto';
+import {TextEncoder} from 'node:util';
 
 test('cloud history never prompts or replaces a browser draft on automatic refresh', async () => {
   const elements = new Map();
@@ -18,6 +20,7 @@ test('cloud history never prompts or replaces a browser draft on automatic refre
     return elements.get(id);
   };
   const context = {
+    crypto: webcrypto, TextEncoder, Uint8Array,
     document: {
       body: { dataset: {} },
       getElementById: element,
@@ -30,6 +33,7 @@ test('cloud history never prompts or replaces a browser draft on automatic refre
     } },
     confirm: () => { prompts++; return true; },
     async fetch(url, options) {
+      if (options.method === 'POST') assert.equal(options.headers['x-amz-content-sha256'], createHash('sha256').update(options.body).digest('hex'));
       requests.push({ url, body: options.body && JSON.parse(options.body) });
       const data = url === '/api/session' ? { authenticated: true }
         : url.startsWith('/api/current?') ? { id: 'latest-cloud-revision', markdown: 'Different cloud draft' }

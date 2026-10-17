@@ -1,0 +1,595 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Resume Studio secure CloudFront delivery and short-retention private access logs.",
+  "Metadata": {
+    "AWSToolsMetrics": {
+      "AWSAgentToolkit": "aws-cloudformation@3"
+    },
+    "com.aws.cloudformation.Context": {
+      "Purpose": "Move resume.usamaaslam.site from a temporary Worker to CloudFront.",
+      "Cost": "Pay-as-you-go recurring monthly CloudFront allowances; no paid WAF, Shield Advanced, real-time logging, or KMS key. S3 log storage remains usage-based.",
+      "Safety": "Separate IAM origin alias permits testing before DNS cutover. Existing CV database and history remain untouched."
+    }
+  },
+  "Resources": {
+    "OriginAccess": {
+      "Type": "AWS::CloudFront::OriginAccessControl",
+      "Properties": {
+        "OriginAccessControlConfig": {
+          "Name": {
+            "Fn::Sub": "${AWS::StackName}-lambda"
+          },
+          "OriginAccessControlOriginType": "lambda",
+          "SigningBehavior": "always",
+          "SigningProtocol": "sigv4"
+        }
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "IAM-signed Lambda origin access.",
+          "must": [
+            "Never expose an unsigned origin."
+          ]
+        }
+      }
+    },
+    "ViewerRequest": {
+      "Type": "AWS::CloudFront::Function",
+      "Properties": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-viewer"
+        },
+        "AutoPublish": true,
+        "FunctionConfig": {
+          "Comment": "Preserve allowlist, request-size guard, and trusted client IP.",
+          "Runtime": "cloudfront-js-2.0"
+        },
+        "FunctionCode": "function handler(event) {\n  var request = event.request;\n  var api = request.uri.indexOf('/api/') === 0;\n  var paths = ['/', '/index.html', '/studio.js', '/studio.css', '/resume.md', '/academic.md', '/general.md',\n    '/Usama%20DP.jpeg', '/Usama%20DP%20headshot.jpeg', '/robots.txt', '/sitemap.xml'];\n  function reject(code, description) {\n    return {statusCode: code, statusDescription: description, headers: {'cache-control': {value: 'no-store'}}};\n  }\n  if (['GET', 'HEAD', 'POST'].indexOf(request.method) < 0) return reject(405, 'Method Not Allowed');\n  if (!api && paths.indexOf(request.uri) < 0) return reject(404, 'Not Found');\n  if (Number((request.headers['content-length'] || {}).value || 0) > 40000) return reject(413, 'Content Too Large');\n  request.headers['x-resume-client-ip'] = {value: event.viewer.ip};\n  delete request.headers['x-resume-origin'];\n  return request;\n}\n"
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Retain existing edge validation and rate-limit identity.",
+          "must": [
+            "Overwrite client IP from event.viewer.ip; never trust viewer-supplied identity."
+          ]
+        }
+      }
+    },
+    "PublicCache": {
+      "Type": "AWS::CloudFront::CachePolicy",
+      "Properties": {
+        "CachePolicyConfig": {
+          "Name": {
+            "Fn::Sub": "${AWS::StackName}-public"
+          },
+          "DefaultTTL": 300,
+          "MaxTTL": 3600,
+          "MinTTL": 0,
+          "ParametersInCacheKeyAndForwardedToOrigin": {
+            "EnableAcceptEncodingGzip": true,
+            "EnableAcceptEncodingBrotli": true,
+            "HeadersConfig": {
+              "HeaderBehavior": "none"
+            },
+            "CookiesConfig": {
+              "CookieBehavior": "none"
+            },
+            "QueryStringsConfig": {
+              "QueryStringBehavior": "whitelist",
+              "QueryStrings": [
+                "v"
+              ]
+            }
+          }
+        }
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Cache public assets by release query without forwarding the viewer Host to Lambda.",
+          "must": [
+            "Minimum TTL zero; private API has separate disabled caching."
+          ]
+        }
+      }
+    },
+    "SecurityHeaders": {
+      "Type": "AWS::CloudFront::ResponseHeadersPolicy",
+      "Properties": {
+        "ResponseHeadersPolicyConfig": {
+          "Name": {
+            "Fn::Sub": "${AWS::StackName}-security"
+          },
+          "SecurityHeadersConfig": {
+            "ContentSecurityPolicy": {
+              "ContentSecurityPolicy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'",
+              "Override": true
+            },
+            "StrictTransportSecurity": {
+              "AccessControlMaxAgeSec": 31536000,
+              "Override": true
+            },
+            "ContentTypeOptions": {
+              "Override": true
+            },
+            "FrameOptions": {
+              "FrameOption": "DENY",
+              "Override": true
+            },
+            "ReferrerPolicy": {
+              "ReferrerPolicy": "same-origin",
+              "Override": true
+            }
+          }
+        }
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Keep HTTPS and browser security headers while allowing bundled print fonts.",
+          "must": [
+            "Keep font-src data: for the licensed embedded print font."
+          ]
+        }
+      }
+    },
+    "Distribution": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Comment": "Personal Resume Studio",
+          "Enabled": true,
+          "IPV6Enabled": true,
+          "Aliases": [
+            "resume.usamaaslam.site"
+          ],
+          "HttpVersion": "http2and3",
+          "PriceClass": "PriceClass_100",
+          "Origins": [
+            {
+              "Id": "lambda",
+              "DomainName": "nzachfp2q3tbmzeo4dyn5cl56a0ofump.lambda-url.us-east-1.on.aws",
+              "OriginAccessControlId": {
+                "Ref": "OriginAccess"
+              },
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "https-only",
+                "OriginSSLProtocols": [
+                  "TLSv1.2"
+                ],
+                "OriginReadTimeout": 75
+              }
+            }
+          ],
+          "DefaultCacheBehavior": {
+            "TargetOriginId": "lambda",
+            "ViewerProtocolPolicy": "redirect-to-https",
+            "Compress": true,
+            "FunctionAssociations": [
+              {
+                "EventType": "viewer-request",
+                "FunctionARN": {
+                  "Fn::GetAtt": [
+                    "ViewerRequest",
+                    "FunctionMetadata.FunctionARN"
+                  ]
+                }
+              }
+            ],
+            "ResponseHeadersPolicyId": {
+              "Ref": "SecurityHeaders"
+            },
+            "AllowedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "CachedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "CachePolicyId": {
+              "Ref": "PublicCache"
+            }
+          },
+          "CacheBehaviors": [
+            {
+              "TargetOriginId": "lambda",
+              "ViewerProtocolPolicy": "redirect-to-https",
+              "Compress": true,
+              "FunctionAssociations": [
+                {
+                  "EventType": "viewer-request",
+                  "FunctionARN": {
+                    "Fn::GetAtt": [
+                      "ViewerRequest",
+                      "FunctionMetadata.FunctionARN"
+                    ]
+                  }
+                }
+              ],
+              "ResponseHeadersPolicyId": {
+                "Ref": "SecurityHeaders"
+              },
+              "PathPattern": "/api/*",
+              "AllowedMethods": [
+                "GET",
+                "HEAD",
+                "OPTIONS",
+                "PUT",
+                "POST",
+                "PATCH",
+                "DELETE"
+              ],
+              "CachedMethods": [
+                "GET",
+                "HEAD"
+              ],
+              "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+              "OriginRequestPolicyId": "b689b0a8-53d0-40ab-baf2-68738e2966ac"
+            }
+          ],
+          "CustomErrorResponses": [
+            {
+              "ErrorCode": 400,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 403,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 404,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 405,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 414,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 416,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 500,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 501,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 502,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 503,
+              "ErrorCachingMinTTL": 0
+            },
+            {
+              "ErrorCode": 504,
+              "ErrorCachingMinTTL": 0
+            }
+          ],
+          "ViewerCertificate": {
+            "AcmCertificateArn": "arn:aws:acm:us-east-1:129631621612:certificate/2bbecb6d-0af9-4095-af6a-ccb5ce372f05",
+            "SslSupportMethod": "sni-only",
+            "MinimumProtocolVersion": "TLSv1.2_2025"
+          }
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "resume-studio"
+          }
+        ]
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "AWS HTTPS delivery replacing the temporary Worker.",
+          "must": [
+            "Test before DNS cutover; retain /api no-cache, HTTPS origin, OAC and custom certificate."
+          ]
+        }
+      }
+    },
+    "AllowUrl": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": "arn:aws:lambda:us-east-1:129631621612:function:resume-studio-origin-api:cloudfront",
+        "Action": "lambda:InvokeFunctionUrl",
+        "Principal": "cloudfront.amazonaws.com",
+        "SourceArn": {
+          "Fn::Sub": "arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Distribution}"
+        },
+        "FunctionUrlAuthType": "AWS_IAM"
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Grant only this distribution access to the IAM Lambda alias.",
+          "must": [
+            "Keep exact SourceArn; no public principal."
+          ]
+        }
+      }
+    },
+    "AllowInvoke": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": "arn:aws:lambda:us-east-1:129631621612:function:resume-studio-origin-api:cloudfront",
+        "Action": "lambda:InvokeFunction",
+        "Principal": "cloudfront.amazonaws.com",
+        "SourceArn": {
+          "Fn::Sub": "arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Distribution}"
+        },
+        "InvokedViaFunctionUrl": true
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Grant only this distribution access to the IAM Lambda alias.",
+          "must": [
+            "Keep exact SourceArn; no public principal."
+          ]
+        }
+      }
+    },
+    "LogsBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true
+        },
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+              }
+            }
+          ]
+        },
+        "OwnershipControls": {
+          "Rules": [
+            {
+              "ObjectOwnership": "BucketOwnerEnforced"
+            }
+          ]
+        },
+        "VersioningConfiguration": {
+          "Status": "Enabled"
+        },
+        "LifecycleConfiguration": {
+          "Rules": [
+            {
+              "Id": "short-retention",
+              "Status": "Enabled",
+              "ExpirationInDays": 7,
+              "NoncurrentVersionExpiration": {
+                "NoncurrentDays": 7
+              },
+              "AbortIncompleteMultipartUpload": {
+                "DaysAfterInitiation": 1
+              }
+            },
+            {
+              "Id": "delete-markers",
+              "Status": "Enabled",
+              "ExpiredObjectDeleteMarker": true
+            }
+          ]
+        }
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Private encrypted standard logs with short retention.",
+          "must": [
+            "No public access; expire logs after seven days."
+          ]
+        }
+      },
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain"
+    },
+    "LogSource": {
+      "Type": "AWS::Logs::DeliverySource",
+      "Properties": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-access"
+        },
+        "LogType": "ACCESS_LOGS",
+        "ResourceArn": {
+          "Fn::Sub": "arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Distribution}"
+        }
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Standard access logging for edge errors and cache behavior.",
+          "must": [
+            "No request bodies or cookies in selected fields."
+          ]
+        }
+      }
+    },
+    "LogsPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "LogsBucket"
+        },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Deny",
+              "Principal": "*",
+              "Action": "s3:*",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "LogsBucket",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::Sub": "${LogsBucket.Arn}/*"
+                }
+              ],
+              "Condition": {
+                "Bool": {
+                  "aws:SecureTransport": "false"
+                }
+              }
+            },
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "delivery.logs.amazonaws.com"
+              },
+              "Action": [
+                "s3:GetBucketAcl"
+              ],
+              "Resource": {
+                "Fn::GetAtt": [
+                  "LogsBucket",
+                  "Arn"
+                ]
+              },
+              "Condition": {
+                "StringEquals": {
+                  "aws:SourceAccount": {
+                    "Ref": "AWS::AccountId"
+                  }
+                },
+                "ArnLike": {
+                  "aws:SourceArn": {
+                    "Fn::GetAtt": [
+                      "LogSource",
+                      "Arn"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "delivery.logs.amazonaws.com"
+              },
+              "Action": [
+                "s3:PutObject"
+              ],
+              "Resource": {
+                "Fn::Sub": "${LogsBucket.Arn}/*"
+              },
+              "Condition": {
+                "StringEquals": {
+                  "aws:SourceAccount": {
+                    "Ref": "AWS::AccountId"
+                  },
+                  "s3:x-amz-acl": "bucket-owner-full-control"
+                },
+                "ArnLike": {
+                  "aws:SourceArn": {
+                    "Fn::GetAtt": [
+                      "LogSource",
+                      "Arn"
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Allow scoped log delivery and deny unencrypted transport.",
+          "must": [
+            "Only this account delivery source may write logs."
+          ]
+        }
+      }
+    },
+    "LogDestination": {
+      "Type": "AWS::Logs::DeliveryDestination",
+      "Properties": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-s3"
+        },
+        "DestinationResourceArn": {
+          "Fn::GetAtt": [
+            "LogsBucket",
+            "Arn"
+          ]
+        },
+        "OutputFormat": "json"
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Encrypted S3 destination avoids a paid KMS key or real-time stream.",
+          "must": [
+            "Keep destination private."
+          ]
+        }
+      },
+      "DependsOn": "LogsPolicy"
+    },
+    "LogDelivery": {
+      "Type": "AWS::Logs::Delivery",
+      "Properties": {
+        "DeliveryDestinationArn": {
+          "Fn::GetAtt": [
+            "LogDestination",
+            "Arn"
+          ]
+        },
+        "DeliverySourceName": {
+          "Fn::Sub": "${AWS::StackName}-access"
+        },
+        "RecordFields": [
+          "date",
+          "time",
+          "cs-method",
+          "cs-uri-stem",
+          "sc-status",
+          "x-edge-result-type",
+          "time-taken"
+        ],
+        "S3SuffixPath": "/access/{yyyy}/{MM}/{dd}/{HH}"
+      },
+      "Metadata": {
+        "com.aws.cloudformation.Context": {
+          "why": "Deliver minimal diagnostic fields without query strings or cookies.",
+          "must": [
+            "Exclude sensitive request data."
+          ]
+        }
+      },
+      "DependsOn": "LogSource"
+    }
+  },
+  "Outputs": {
+    "DistributionId": {
+      "Value": {
+        "Ref": "Distribution"
+      }
+    },
+    "DistributionDomain": {
+      "Value": {
+        "Fn::GetAtt": [
+          "Distribution",
+          "DomainName"
+        ]
+      }
+    },
+    "DistributionArn": {
+      "Value": {
+        "Fn::Sub": "arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Distribution}"
+      }
+    }
+  }
+}

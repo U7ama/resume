@@ -38,6 +38,8 @@
       options.method = 'POST';
       options.body = JSON.stringify(body);
       options.headers['Content-Type'] = 'application/json';
+      const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(options.body));
+      options.headers['x-amz-content-sha256'] = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
     }
     const response = await fetch(`/api/${path}`, options);
     const data = await response.json().catch(() => ({error: 'Server unavailable. Please try again.'}));

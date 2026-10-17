@@ -1,5 +1,6 @@
 """Build an allowlisted Lambda package and a reproducible CloudFormation template."""
 import argparse
+import base64
 import hashlib
 import json
 from pathlib import Path
@@ -21,10 +22,11 @@ def attr(name, key):
     return {'Fn::GetAtt': [name, key]}
 
 
-def template(bucket, code_key):
-    return {
+def template(bucket, code_key, code_sha, cdn=None):
+    cdn = cdn or {}
+    result = {
         'AWSTemplateFormatVersion': '2010-09-09',
-        'Description': 'Resume Studio AWS origin: CV app, private version history and bounded Qwen generation. Cloudflare provides HTTPS routing.',
+        'Description': 'Resume Studio AWS origin: CV app, private version history and bounded Qwen generation. Supports staged CloudFront delivery.',
         'Metadata': {'com.aws.cloudformation.Context': {
             'Purpose': 'Personal CV workspace',
             'Database': 'DynamoDB Standard provisioned 5 RCU/10 WCU; immutable revisions; retained on deletion',
@@ -64,6 +66,31 @@ def template(bucket, code_key):
             'ApiFunction': {'Description': 'Application function name', 'Value': ref('Api')},
         },
     }
+    result['Metadata']['AWSToolsMetrics'] = {'AWSAgentToolkit': 'aws-cloudformation@3'}
+    if cdn.get('prepare'):
+        resources = result['Resources']
+        resources['Api']['Properties']['Environment']['Variables']['ALLOW_IAM_ORIGIN'] = '1'
+        resources['CloudFrontVersion'] = {'Type': 'AWS::Lambda::Version', 'DeletionPolicy': 'Retain', 'UpdateReplacePolicy': 'Retain',
+            'Properties': {'FunctionName': ref('Api'), 'CodeSha256': code_sha, 'Description': code_key},
+            'Metadata': {'com.aws.cloudformation.Context': {'why': 'Immutable tested release for the CloudFront origin.', 'must': ['Publish after Api code updates; retain earlier versions.']}}}
+        resources['CloudFrontAlias'] = {'Type': 'AWS::Lambda::Alias',
+            'Properties': {'Name': 'cloudfront', 'FunctionName': ref('Api'), 'FunctionVersion': attr('CloudFrontVersion', 'Version')},
+            'Metadata': {'com.aws.cloudformation.Context': {'why': 'Stable CloudFront endpoint across code releases.', 'must': ['Keep alias name and endpoint stable.']}}}
+        resources['CloudFrontUrl'] = {'Type': 'AWS::Lambda::Url', 'DependsOn': 'CloudFrontAlias',
+            'Properties': {'TargetFunctionArn': ref('Api'), 'Qualifier': 'cloudfront', 'AuthType': 'AWS_IAM'},
+            'Metadata': {'com.aws.cloudformation.Context': {'why': 'Parallel IAM-only origin permits testing before DNS migration.', 'must': ['Require SigV4; CloudFront stack scopes invoke permissions.']}}}
+        result['Outputs']['CloudFrontOriginUrl'] = {'Value': attr('CloudFrontUrl', 'FunctionUrl')}
+        result['Outputs']['CloudFrontAliasArn'] = {'Value': sub('${Api.Arn}:cloudfront')}
+        if cdn.get('active'):
+            result['Metadata']['com.aws.cloudformation.Context']['Origin'] = 'IAM-only Lambda Function URLs; CloudFront OAC scoped to this distribution'
+            result['Outputs']['OriginUrl']['Description'] = 'Legacy IAM-only URL; live CloudFront uses CloudFrontOriginUrl'
+            resources['ApiUrl']['Properties']['AuthType'] = 'AWS_IAM'
+            for key in ['AllowUrl', 'AllowInvoke']:
+                props = resources[key]['Properties']
+                props['Principal'] = 'cloudfront.amazonaws.com'
+                props['SourceArn'] = cdn['distribution_arn']
+                props.pop('FunctionUrlAuthType', None)
+    return result
 
 
 def main():
@@ -80,7 +107,10 @@ def main():
         for name in FILES:
             archive.write(root / name, 'public/' + name)
     code_key = 'deploy/api-' + hashlib.sha256(package.read_bytes()).hexdigest()[:20] + '.zip'
-    deployment = template(args.bucket, code_key)
+    state_path = root / 'infra/cloudfront-state.json'
+    cdn = json.loads(state_path.read_text()) if state_path.exists() else {}
+    code_sha = base64.b64encode(hashlib.sha256(package.read_bytes()).digest()).decode()
+    deployment = template(args.bucket, code_key, code_sha, cdn)
     (root / 'infra').mkdir(exist_ok=True)
     (root / 'infra/template.json').write_text(json.dumps(deployment, indent=2) + '\n')
     (output / 'upload-manifest.json').write_text(json.dumps([{'path': str(package), 'key': code_key}] +
