@@ -56,6 +56,7 @@ Full-stack engineer with 4+ years building production SaaS applications, APIs, a
 
 ## Selected Projects
 
+- [Blindspot Edu](https://blindspot-edu.online) - Built a Next.js/FastAPI lecture-learning platform with Whisper transcription, Qwen prerequisite checks, diagnostic quizzes, and timestamped evidence; deployed on AWS with S3, Polly, and SES.
 - [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - Built a multi-tenant AI copilot with pgvector RAG, approval-gated workflows, signed n8n automation, and an Expo companion app; added a 40-case evaluation suite.
 - [Copilot Travel](https://copilottravel.com/) - Built a reusable Next.js/TypeScript web component for flight search and booking.
 - [Sunridge Medical](https://sunridgemedical.com/) - Built a clinic dashboard for patient, appointment, treatment, and lab-result workflows.

@@ -154,6 +154,20 @@
 
 ## Projects
 
+### blindspot-edu | Blindspot Edu | Applied AI / Education
+
+- summary | An AI learning platform that turns lecture recordings into guided lessons, identifies missing prerequisites, and connects explanations to timestamped source evidence.
+- detail | Built a Next.js and FastAPI application with audio/video upload, supported YouTube and direct-media imports, and in-browser lecture recording.
+- detail | Combined faster-whisper transcription and Qwen reasoning to check prerequisite coverage across the recording and generate guided learning paths, explanations, and worked examples.
+- detail | Implemented diagnostic checks and different reassessment questions, with saved learner progress and inspectable transcript excerpts beside the lesson.
+- detail | Added resumable background processing, transcript and model-response caches, and isolated anonymous learner sessions for private uploads and progress.
+- detail | Deployed on AWS EC2 with private S3 media storage, optional Polly narration, SES completion emails, CloudFormation infrastructure, and Systems Manager operations.
+- technologies | Next.js, TypeScript, Python, FastAPI, faster-whisper, Qwen, SQLite, AWS EC2, Amazon S3, Amazon Polly, Amazon SES, CloudFormation, Caddy
+- link | Website | https://blindspot-edu.online
+- link | Repository | https://github.com/U7ama/blindspot-edu
+- link | Demo | https://youtu.be/krE6TKkHGLw
+- video | youtube | krE6TKkHGLw | Blindspot Edu learning journey and AWS deployment demonstration
+
 ### deviceops-ai-copilot | DeviceOps AI Copilot | Applied AI / SaaS / IoT
 
 - summary | An AI copilot for device-operations teams, with multi-tenant RAG, cited troubleshooting guidance, approval-gated workflows, signed n8n automation, and an Expo technician app.

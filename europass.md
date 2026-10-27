@@ -85,6 +85,7 @@ Full-stack engineer with 4+ years of professional experience engineering product
 
 ## Key Projects
 
+- **[Blindspot Edu](https://blindspot-edu.online):** Lecture-learning platform built with Next.js, FastAPI, Whisper, and Qwen, combining prerequisite diagnostics, worked examples, reassessment, and timestamped source evidence; hosted on AWS with S3, Polly, and SES.
 - **DeviceOps AI Copilot:** Multi-tenant AI copilot with pgvector RAG, approval-gated workflows, signed n8n automation, and mobile companion app with a 40-case evaluation suite.
 - **Copilot Travel:** Enterprise travel booking UI component built with Next.js and TypeScript.
 - **Sunridge Medical:** Comprehensive clinical dashboard for patient management, treatment plans, and laboratory results.

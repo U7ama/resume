@@ -3,6 +3,7 @@ from pathlib import Path
 import shutil
 
 FILES = ['index.html', 'studio.js', 'studio.css', 'resume.md', 'academic.md', 'general.md',
+         'portfolio.md',
          'Usama DP.jpeg', 'Usama DP headshot.jpeg', 'robots.txt', 'sitemap.xml']
 
 

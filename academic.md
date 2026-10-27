@@ -54,6 +54,7 @@ CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-med
 
 ## Selected Projects
 
+- [Blindspot Edu](https://blindspot-edu.online) - Lecture-learning platform connecting prerequisite diagnostics, worked examples, and reassessment to timestamped recording evidence, built with Next.js, FastAPI, Whisper, and Qwen on AWS.
 - [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - Multi-tenant AI copilot combining pgvector retrieval, approval-gated workflows, signed n8n automation, an Expo mobile companion, and a 40-case evaluation suite.
 - [Sunridge Medical](https://sunridgemedical.com/) - Clinic dashboard supporting patient, appointment, treatment, and laboratory-result workflows.
 - [Copilot Travel](https://copilottravel.com/) - Reusable web component supporting flight search and booking.

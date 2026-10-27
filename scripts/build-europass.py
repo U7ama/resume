@@ -229,6 +229,7 @@ def build_pdf(out_path: Path, show_photo: bool = True):
     # 6. Selected Projects
     section('Selected Projects')
     projects = [
+        ('Blindspot Edu', 'https://blindspot-edu.online', 'Next.js/FastAPI lecture-learning platform with Whisper transcription, Qwen prerequisite diagnostics, worked examples, reassessment, and timestamped evidence; AWS hosting with S3, Polly, and SES.'),
         ('DeviceOps AI Copilot', 'https://github.com/U7ama/deviceops-ai-copilot', 'Multi-tenant AI copilot with pgvector RAG, approval-gated workflows, signed n8n automation, Expo mobile companion, and 40-case evaluation suite.'),
         ('Copilot Travel', 'https://copilottravel.com/', 'Enterprise flight search and booking UI component built with Next.js and TypeScript.'),
         ('Sunridge Medical', 'https://sunridgemedical.com/', 'Clinic management dashboard for patient records, appointments, and laboratory-result workflows.'),

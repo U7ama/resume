@@ -59,6 +59,7 @@ Relevant coursework: Communication & Presentation Skills; Technical and Business
 
 ## Selected Projects
 
+- [Blindspot Edu](https://blindspot-edu.online) - Learning platform that helps students understand recorded lectures through knowledge checks, focused explanations, and links to the original recording; student feedback shaped recording and notification features.
 - [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - AI assistant with retrieval, approval workflows, automation, and a mobile companion; helps people find guidance and review proposed actions.
 - [Sunridge Medical](https://sunridgemedical.com/) - Clinic dashboard bringing patient, appointment, treatment, and lab-result workflows together in one place.
 - [Copilot Travel](https://copilottravel.com/) - Reusable flight-search and booking web component designed for integration into travel websites.
