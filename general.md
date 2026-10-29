@@ -27,7 +27,7 @@ Technology professional with 4+ years of experience delivering digital products 
 - Added AI-assisted troubleshooting and import mapping with human review, highlighting possible mistakes before people saved information.
 - Managed deployment pipelines using Azure DevOps and Docker.
 
-### Full Stack Developer | Olumi Tech (Remote) | Nov 2023 - Feb 2025
+### Node.js Developer | Olumi Tech (Remote) | Nov 2023 - Jan 2025
 
 - Delivered features and integrations across seven healthcare, travel, e-commerce, and productivity products, turning client requests into practical product improvements.
 - Integrated AI features for image analysis, ingredient identification, recipe discovery, and personal journaling.
@@ -38,7 +38,7 @@ Technology professional with 4+ years of experience delivering digital products 
 - Built web interfaces, backend services, and integrations for payments, travel, messaging, and document workflows, helping different systems work together.
 - Automated cloud infrastructure and deployment configuration.
 
-### MERN Stack Developer | Stash Technologies (Remote) | Mar 2022 - Aug 2022
+### React/Node.js Developer | Stash Technologies (Remote) | Mar 2022 - Aug 2022
 
 - Discussed requirements and feedback while building hotel discovery and booking flows for Roomph.pk.
 - Improved page responsiveness by reducing repeated rendering and data requests.

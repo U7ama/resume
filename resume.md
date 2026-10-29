@@ -28,7 +28,7 @@ Full-stack engineer with 4+ years building production SaaS applications, APIs, a
 - Added AI-assisted import mapping and validation warnings, with human review before records are saved.
 - Managed deployment pipelines using Azure DevOps and Docker.
 
-### Full Stack Developer | Olumi Tech (Remote) | Nov 2023 - Feb 2025
+### Node.js Developer | Olumi Tech (Remote) | Nov 2023 - Jan 2025
 
 - Delivered full-stack features, APIs, and integrations across seven healthcare, travel, e-commerce, and productivity products using React, Node.js, and FastAPI, with cloud deployment support.
 - Integrated Gemini image analysis for ingredient identification and recipe discovery in [Cool Potato](https://apps.apple.com/ca/app/coolpotato/id6677017071), and OpenAI-assisted journaling in Diary Synergy.
@@ -39,7 +39,7 @@ Full-stack engineer with 4+ years building production SaaS applications, APIs, a
 - Automated AWS/GCP infrastructure with Terraform and deployed Kong Ingress on GKE/Anthos.
 - Built independently deployable Next.js/TypeScript microfrontends and integrated PostgreSQL/GraphQL services with payments, messaging, travel, document signing, and PDF generation.
 
-### MERN Stack Developer | Stash Technologies (Remote) | Mar 2022 - Aug 2022
+### React/Node.js Developer | Stash Technologies (Remote) | Mar 2022 - Aug 2022
 
 - Built hotel discovery and booking flows for [Roomph.pk](https://roomph.pk/) using React, Node.js, and MongoDB; reduced redundant rendering and API requests.
 
@@ -58,6 +58,6 @@ Full-stack engineer with 4+ years building production SaaS applications, APIs, a
 
 - [Blindspot Edu](https://blindspot-edu.online) - Built a Next.js/FastAPI lecture-learning platform with Whisper transcription, Qwen prerequisite checks, diagnostic quizzes, and timestamped evidence; deployed on AWS with S3, Polly, and SES.
 - [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - Built a multi-tenant AI copilot with pgvector RAG, approval-gated workflows, signed n8n automation, and an Expo companion app; added a 40-case evaluation suite.
-- [Copilot Travel](https://copilottravel.com/) - Built a reusable Next.js/TypeScript web component for flight search and booking.
+- [Copilot Travel](https://copilottravel.com/) - Built a reusable Next.js/TypeScript web component for flight search and booking through Xecutors.
 - [Sunridge Medical](https://sunridgemedical.com/) - Built a clinic dashboard for patient, appointment, treatment, and lab-result workflows.
 - [Interactive portfolio](https://portfolio.usamaaslam.site/) - Built [main](https://usamaaslam.site/), [Three.js](https://3d.usamaaslam.site/), and [desktop-style](https://os.usamaaslam.site/) portfolio experiences.

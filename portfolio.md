@@ -41,7 +41,7 @@
 - detail | Added AI-assisted import mapping and validation warnings, with human review before records are saved.
 - detail | Managed deployment pipelines using Azure DevOps and Docker.
 
-### olumi-tech | Full Stack Developer | Olumi Tech | Remote | Nov 2023 - Feb 2025
+### olumi-tech | Node.js Developer | Olumi Tech | Remote | Nov 2023 - Jan 2025
 
 - summary | Delivered full-stack features, APIs, integrations, and deployment support across seven client products.
 - detail | Built frontend features and backend APIs using React, Node.js, and Python/FastAPI.
@@ -59,7 +59,7 @@
 - detail | Built independently deployable Next.js/TypeScript microfrontends and reusable web components with Stencil.js and Bit.
 - detail | Integrated PostgreSQL and GraphQL/Hasura, alongside Stripe, Braintree, SendGrid, WhatsApp Business API, Amadeus, DocuSign, and Adobe PDF generation.
 
-### stash-technologies | MERN Stack Developer | Stash Technologies | Remote | Mar 2022 - Aug 2022
+### stash-technologies | React/Node.js Developer | Stash Technologies | Remote | Mar 2022 - Aug 2022
 
 - website | https://stashtechnologies.com/
 - summary | Built hotel discovery and booking flows for Roomph.pk using React, Node.js, REST APIs, and MongoDB.
@@ -194,7 +194,7 @@
 ### copilot-travel | Copilot Travel | Travel / Web Component
 
 - featured | 2
-- summary | A reusable flight-search and booking web component for integration into existing websites.
+- summary | A reusable flight-search and booking web component delivered through Xecutors for integration into existing websites.
 - detail | Built a Next.js/TypeScript frontend and packaged it as a reusable web component with Stencil.js and Bit.
 - detail | Used Apollo GraphQL subgraphs and serverless functions deployed across GCP, AWS, and Azure, with load balancing for performance and availability.
 - detail | Designed the component to run independently of the host website's frontend framework.

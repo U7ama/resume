@@ -25,7 +25,7 @@ Full-stack engineer with 4+ years of professional experience engineering product
 - Implemented tenant-scoped, read-only AI troubleshooting assistants with pgvector RAG, citations, and validation warnings.
 - Automated deployment pipelines using Azure DevOps and Docker.
 
-### Full Stack Developer | Olumi Tech (Remote) | 11/2023 – 02/2025
+### Node.js Developer | Olumi Tech (Remote) | 11/2023 – 01/2025
 - Delivered full-stack features, REST APIs, and third-party integrations across seven products in healthcare, travel, e-commerce, and productivity.
 - Integrated multimodal Gemini AI for computer vision (ingredient detection and recipe discovery in Cool Potato) and OpenAI-assisted journaling in Diary Synergy.
 - Supported production cloud deployment and operational monitoring.
@@ -35,7 +35,7 @@ Full-stack engineer with 4+ years of professional experience engineering product
 - Implemented Infrastructure as Code (IaC) with Terraform for automated provisioning across AWS and GCP; deployed Kong Ingress on GKE/Anthos.
 - Built independently deployable Next.js/TypeScript microfrontends and integrated PostgreSQL/GraphQL services for billing, messaging, and digital document signing.
 
-### MERN Stack Developer | Stash Technologies (Remote) | 03/2022 – 08/2022
+### React/Node.js Developer | Stash Technologies (Remote) | 03/2022 – 08/2022
 - Developed high-performance search and booking flows for hotel reservation platform Roomph.pk.
 - Optimised client-side rendering and API request overhead using React, Node.js, and MongoDB.
 
@@ -87,6 +87,6 @@ Full-stack engineer with 4+ years of professional experience engineering product
 
 - **[Blindspot Edu](https://blindspot-edu.online):** Lecture-learning platform built with Next.js, FastAPI, Whisper, and Qwen, combining prerequisite diagnostics, worked examples, reassessment, and timestamped source evidence; hosted on AWS with S3, Polly, and SES.
 - **DeviceOps AI Copilot:** Multi-tenant AI copilot with pgvector RAG, approval-gated workflows, signed n8n automation, and mobile companion app with a 40-case evaluation suite.
-- **Copilot Travel:** Enterprise travel booking UI component built with Next.js and TypeScript.
+- **Copilot Travel:** Enterprise travel booking UI component built with Next.js and TypeScript through Xecutors.
 - **Sunridge Medical:** Comprehensive clinical dashboard for patient management, treatment plans, and laboratory results.
 - **Interactive Portfolio Ecosystem:** High-performance portfolio featuring Three.js 3D graphics and desktop OS-style web interface.

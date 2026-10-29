@@ -38,7 +38,7 @@ CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-med
 - Implemented a tenant-scoped AI assistant with cited troubleshooting guidance, and AI-assisted import mapping with validation warnings and human review before records are saved.
 - Managed deployment pipelines using Azure DevOps and Docker.
 
-### Full Stack Developer | Olumi Tech (Remote) | Nov 2023 - Feb 2025
+### Node.js Developer | Olumi Tech (Remote) | Nov 2023 - Jan 2025
 
 - Delivered features, APIs, and integrations across seven healthcare, travel, e-commerce, and productivity products.
 - Integrated image analysis for ingredient identification and recipe discovery, and AI-assisted journaling.
@@ -48,7 +48,7 @@ CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-med
 - Developed serverless services, independently deployable web interfaces, and integrations for payments, messaging, travel, and document workflows.
 - Automated cloud infrastructure with Terraform and deployed Kong Ingress on GKE/Anthos.
 
-### MERN Stack Developer | Stash Technologies (Remote) | Mar 2022 - Aug 2022
+### React/Node.js Developer | Stash Technologies (Remote) | Mar 2022 - Aug 2022
 
 - Built hotel discovery and booking flows for Roomph.pk using React, Node.js, and MongoDB; reduced redundant rendering and API requests.
 

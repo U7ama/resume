@@ -111,7 +111,7 @@ def build_pdf(out_path: Path, show_photo: bool = True):
         'Automated CI/CD deployment pipelines using Azure DevOps and Docker containers.'
     ])
 
-    job_entry('Full Stack Developer', 'Olumi Tech', '11/2023 – 02/2025', 'Remote', [
+    job_entry('Node.js Developer', 'Olumi Tech', '11/2023 – 01/2025', 'Remote', [
         'Delivered full-stack web applications, REST APIs, and microservices across healthcare, travel, and e-commerce products.',
         'Integrated multimodal Gemini computer vision for real-time ingredient analysis in Cool Potato and OpenAI-powered journaling in Diary Synergy.',
         'Collaborated with international engineering teams using Agile workflows, maintaining clean code standards.'
@@ -123,7 +123,7 @@ def build_pdf(out_path: Path, show_photo: bool = True):
         'Engineered independently deployable Next.js/TypeScript microfrontends and integrated PostgreSQL/GraphQL services for billing, messaging, and digital document workflows.'
     ])
 
-    job_entry('MERN Stack Developer', 'Stash Technologies', '03/2022 – 08/2022', 'Remote', [
+    job_entry('React/Node.js Developer', 'Stash Technologies', '03/2022 – 08/2022', 'Remote', [
         'Engineered hotel discovery and booking flows for Roomph.pk with React, Node.js, and MongoDB.',
         'Optimised client-side state management, cutting redundant API requests and page re-render cycles.'
     ])
