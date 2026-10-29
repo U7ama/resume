@@ -31,6 +31,12 @@
 
 ## Experience
 
+### freelance-upwork | Full Stack Engineer | Freelance via Upwork | Remote | Jul 2024 - Present
+
+- website | https://www.upwork.com/freelancers/usamaa241?mp_source=share
+- summary | Provide freelance full-stack development services to clients through Upwork.
+- detail | Work independently through Upwork on full-stack development.
+
 ### alignav | Full Stack Engineer | AlignAV | Remote | Aug 2024 - Sep 2026
 
 - website | https://www.alignav.com/

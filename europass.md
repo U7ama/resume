@@ -19,6 +19,10 @@ Full-stack engineer with 4+ years of professional experience engineering product
 
 ## Work Experience
 
+### Full Stack Engineer | Freelance via Upwork (Remote) | 07/2024 – Present
+
+- Provide freelance full-stack development services to clients through Upwork.
+
 ### Full Stack Engineer | AlignAV (Remote) | 08/2024 – 09/2026
 - Engineered real-time asset-management dashboards and AV/IoT monitoring services for 5,000+ connected devices.
 - Developed an Azure IoT edge architecture and a C# Windows monitoring client.

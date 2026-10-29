@@ -21,6 +21,10 @@ Full-stack engineer with 4+ years building production SaaS applications, APIs, a
 
 ## Experience
 
+### Full Stack Engineer | Freelance via Upwork (Remote) | Jul 2024 - Present
+
+- Provide freelance full-stack development services to clients through Upwork.
+
 ### Full Stack Engineer | AlignAV (Remote) | Aug 2024 - Sep 2026
 
 - Built [AlignAV](https://www.alignav.com/) asset-management dashboards and real-time AV/IoT monitoring services for 5,000+ connected devices, including Azure IoT edge services and a C# Windows monitoring client.

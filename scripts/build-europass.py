@@ -104,6 +104,10 @@ def build_pdf(out_path: Path, show_photo: bool = True):
         items.append(Spacer(1, 4))
         story.append(KeepTogether(items))
 
+    job_entry('Full Stack Engineer', 'Freelance via Upwork', '07/2024 – Present', 'Remote', [
+        'Provide freelance full-stack development services to clients through Upwork.'
+    ])
+
     job_entry('Full Stack Engineer', 'AlignAV', '08/2024 – 09/2026', 'Remote', [
         'Architected real-time asset-management dashboards and AV/IoT monitoring services supporting 5,000+ connected devices.',
         'Engineered Azure IoT edge services and a lightweight C# Windows monitoring client for device telemetry.',

@@ -2,7 +2,7 @@
 
 > Computer Science Graduate | Software Engineering & Digital Projects
 
-Computer Science graduate with 4+ years of professional experience delivering SaaS products, APIs, and real-time monitoring systems. Seeking postgraduate study that connects technology, digital project delivery, and management, supported by practical experience across healthcare, travel, e-commerce, and AV/IoT products.
+Computer Science graduate with 4+ years delivering SaaS products, APIs, and real-time monitoring systems. Seeking postgraduate study connecting technology, digital project delivery, and management.
 
 ## Display Options
 
@@ -22,7 +22,7 @@ Computer Science graduate with 4+ years of professional experience delivering Sa
 
 ### Bachelor of Science in Computer Science | PMAS Arid Agriculture University, Rawalpindi | 2018 - 2022
 
-CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-medium teaching certified by the University Institute of Information Technology on 2 March 2023.
+CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-medium teaching certified by the University Institute of Information Technology on 2 March 2023. Academic reference letters available on request.
 
 ## Academic Preparation
 
@@ -31,6 +31,10 @@ CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-med
 - Final Year Project I and II completed as part of the BSCS programme; Final Year Project II grade: A.
 
 ## Experience
+
+### Full Stack Engineer | Freelance via Upwork (Remote) | Jul 2024 - Present
+
+- Provide freelance full-stack development services to clients through Upwork.
 
 ### Full Stack Engineer | AlignAV (Remote) | Aug 2024 - Sep 2026
 
@@ -54,8 +58,8 @@ CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-med
 
 ## Selected Projects
 
-- [Blindspot Edu](https://blindspot-edu.online) - Lecture-learning platform connecting prerequisite diagnostics, worked examples, and reassessment to timestamped recording evidence, built with Next.js, FastAPI, Whisper, and Qwen on AWS.
-- [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - Multi-tenant AI copilot combining pgvector retrieval, approval-gated workflows, signed n8n automation, an Expo mobile companion, and a 40-case evaluation suite.
+- [Blindspot Edu](https://blindspot-edu.online) - Lecture-learning platform with prerequisite diagnostics, worked examples, and timestamped evidence; Next.js, FastAPI, Whisper, Qwen, AWS.
+- [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - Multi-tenant AI copilot with pgvector retrieval, approval workflows, n8n automation, an Expo companion, and 40-case evaluation.
 - [Sunridge Medical](https://sunridgemedical.com/) - Clinic dashboard supporting patient, appointment, treatment, and laboratory-result workflows.
 - [Copilot Travel](https://copilottravel.com/) - Reusable web component supporting flight search and booking.
 
@@ -64,7 +68,3 @@ CGPA: 3.30/4.00; aggregate: 70.42%. Result notified 1 December 2022. English-med
 - Application Development | React, Next.js, TypeScript, Node.js, Python, FastAPI.
 - Data & Cloud | PostgreSQL, MongoDB, AWS, GCP, Azure IoT, Docker, Terraform, CI/CD.
 - Applied AI | LLM integrations, RAG, multimodal image analysis, evaluations, human-reviewed automation.
-
-## References
-
-- Academic reference letters available on request.

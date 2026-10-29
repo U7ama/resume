@@ -20,6 +20,10 @@ Technology professional with 4+ years of experience delivering digital products 
 
 ## Experience
 
+### Full Stack Engineer | Freelance via Upwork (Remote) | Jul 2024 - Present
+
+- Provide freelance full-stack development services to clients through Upwork.
+
 ### Full Stack Engineer | AlignAV (Remote) | Aug 2024 - Sep 2026
 
 - Discussed client requirements and feedback, explained proposed changes, and provided progress updates while working with remote teams.
@@ -59,7 +63,7 @@ Relevant coursework: Communication & Presentation Skills; Technical and Business
 
 ## Selected Projects
 
-- [Blindspot Edu](https://blindspot-edu.online) - Learning platform that helps students understand recorded lectures through knowledge checks, focused explanations, and links to the original recording; student feedback shaped recording and notification features.
-- [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - AI assistant with retrieval, approval workflows, automation, and a mobile companion; helps people find guidance and review proposed actions.
-- [Sunridge Medical](https://sunridgemedical.com/) - Clinic dashboard bringing patient, appointment, treatment, and lab-result workflows together in one place.
-- [Copilot Travel](https://copilottravel.com/) - Reusable flight-search and booking web component designed for integration into travel websites.
+- [Blindspot Edu](https://blindspot-edu.online) - Lecture-learning platform with knowledge checks, focused explanations, and recording links.
+- [DeviceOps AI Copilot](https://github.com/U7ama/deviceops-ai-copilot) - AI assistant with retrieval, approval workflows, automation, and a mobile companion.
+- [Sunridge Medical](https://sunridgemedical.com/) - Clinic dashboard for patient, appointment, treatment, and lab-result workflows.
+- [Copilot Travel](https://copilottravel.com/) - Reusable flight-search and booking component delivered through Xecutors.
